@@ -1,5 +1,5 @@
 import dao.ConnectionPool;
-import dao.UserDetailDAO;
+import dao.impl.UserDetailDaoImpl;
 import entity.UserDetail;
 
 import java.sql.*;
@@ -19,7 +19,7 @@ public class Runner {
             userDetail.setExperience("234");
             userDetail.setSalary(12);
             userDetail.setStatus("24");
-            UserDetailDAO dao = new UserDetailDAO();
+            UserDetailDaoImpl dao = new UserDetailDaoImpl();
             dao.addUserDetail(userDetail);
 
 //            while (result.next()) {

@@ -1,10 +1,10 @@
-package dao;
+package dao.impl;
 
 import entity.User;
 
 import java.sql.Connection;
 
-public class UserDAO {
+public class UserDaoImpl {
 
     public void addUser(User user) {
 
