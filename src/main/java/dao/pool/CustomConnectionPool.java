@@ -1,5 +1,8 @@
 package dao.pool;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -24,6 +27,8 @@ public class CustomConnectionPool {
     private static Lock lock = new ReentrantLock();
 
     private static AtomicBoolean create = new AtomicBoolean(false);
+
+    private static final Logger logger = LogManager.getLogger();
 
     private CustomConnectionPool() {
         registerDriver();

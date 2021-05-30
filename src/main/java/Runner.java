@@ -2,11 +2,17 @@
 import dao.pool.CustomConnectionPool;
 import dao.impl.UserDetailDaoImpl;
 import dao.pool.ProxyConnection;
-import entity.UserDetail;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import java.sql.*;
 
 public class Runner {
+
+    static final Logger rootLogger = LogManager.getRootLogger();
+//    static final Logger userLogger = LogManager.getLogger(User.class);
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 //        Connection connection = CustomConnectionPool.getInstance().getConnection();
 //
