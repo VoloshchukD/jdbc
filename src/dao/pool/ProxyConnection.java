@@ -1,4 +1,4 @@
-package dao;
+package dao.pool;
 
 import java.sql.*;
 import java.util.Map;
@@ -55,11 +55,15 @@ public class ProxyConnection implements Connection {
 
     @Override
     public void close() throws SQLException {
-//        ConnectionPool.getInstance().releaseConnection(this) or returnConnection
+    //TODO ConnectionPool.getInstance().releaseConnection(this) or returnConnection
     }
 
-    void realClose() throws SQLException {
-        connection.close();
+    void realClose() {
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override

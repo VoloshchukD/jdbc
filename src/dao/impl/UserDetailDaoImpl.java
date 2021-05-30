@@ -1,6 +1,6 @@
 package dao.impl;
 
-import dao.ConnectionPool;
+import dao.pool.CustomConnectionPool;
 import entity.UserDetail;
 
 import java.sql.Connection;
@@ -22,7 +22,7 @@ public class UserDetailDaoImpl {
         boolean isAdded = false;
 
         try {
-            Connection connection = ConnectionPool.getConnection();
+            Connection connection = CustomConnectionPool.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(SQL_ADD_USER_DETAIL);
             statement.setString(1, userDetail.getFirstName());
             statement.setString(2, userDetail.getLastName());
@@ -42,7 +42,7 @@ public class UserDetailDaoImpl {
         UserDetail userDetail = null;
 
         try {
-            Connection connection = ConnectionPool.getConnection();
+            Connection connection = CustomConnectionPool.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_DETAIL);
             statement.setString(1, String.valueOf(id));
             ResultSet resultSet = statement.executeQuery();
@@ -65,7 +65,7 @@ public class UserDetailDaoImpl {
 
     public UserDetail updateUserDetail(UserDetail userDetail) {
         try {
-            Connection connection = ConnectionPool.getConnection();
+            Connection connection = CustomConnectionPool.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_USER_DETAIL);
             statement.setString(1, userDetail.getFirstName());
             statement.setString(2, userDetail.getLastName());
