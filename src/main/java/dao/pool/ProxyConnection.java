@@ -55,15 +55,12 @@ public class ProxyConnection implements Connection {
 
     @Override
     public void close() throws SQLException {
-    //TODO ConnectionPool.getInstance().releaseConnection(this) or returnConnection
+        CustomConnectionPool connectionPool = CustomConnectionPool.getInstance();
+        connectionPool.releaseConnection(this);
     }
 
-    void realClose() {
-        try {
-            connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    void realClose() throws SQLException {
+        connection.close();
     }
 
     @Override

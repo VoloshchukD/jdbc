@@ -1,5 +1,6 @@
 package dao.pool;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,7 +45,7 @@ public class CustomConnectionPool {
     }
 
     private void init() {
-        availableConnections= new LinkedBlockingDeque<>(ConnectionProperty.DEFAULT_POOL_SIZE);
+        availableConnections = new LinkedBlockingDeque<>(ConnectionProperty.DEFAULT_POOL_SIZE);
         givenAwayConnections = new ArrayDeque<>();
 
         for (int i = 0; i < ConnectionProperty.DEFAULT_POOL_SIZE; i++) {
@@ -54,20 +55,20 @@ public class CustomConnectionPool {
                         ConnectionProperty.DATABASE_PASSWORD);
                 ProxyConnection proxyConnection = new ProxyConnection(connection);
                 availableConnections.offer(proxyConnection);
-            } catch (SQLException throwables) {
-                //TODO log
-                throwables.printStackTrace(); //TODO del
+            } catch (SQLException e) {
+                logger.log(Level.ERROR, "Connection error " + e.getMessage());
             }
         }
+        if (availableConnections.size() == 0) {
+            logger.log(Level.FATAL, "Connection pool is created without connections");
+            throw new RuntimeException("Connection pool is not created");
+        }
 
-
-        //TODO проверить есть ли конекшны в пуле и бросить рантайм если их 0 Exception in initializerError
         //TODO если соединений меньше чем в файле досоздать до нужного количества
-        //TODO fatal exception если нет файла или данных в файле
     }
 
     public static CustomConnectionPool getInstance() {
-        if(!create.get()) {
+        if (!create.get()) {
             try {
                 lock.lock();
                 if (instance == null) {
@@ -88,18 +89,18 @@ public class CustomConnectionPool {
             connection = availableConnections.take();
             givenAwayConnections.offer(connection);
         } catch (InterruptedException e) {
-            //TODO log
-            e.printStackTrace();
+            logger.log(Level.ERROR, "Waiting interrupted " + e.getMessage());
             Thread.currentThread().interrupt();
         }
         return connection;
     }
 
     public void releaseConnection(Connection connection) {
-        //TODO проверка на ProxyConnection и вернуть исключение если конекшн не наш неProxy Connection getCalss методом
-        ProxyConnection proxyConnection = (ProxyConnection) connection;
-        givenAwayConnections.remove(proxyConnection);
-        availableConnections.offer(proxyConnection);
+        if (connection instanceof ProxyConnection) {
+            ProxyConnection proxyConnection = (ProxyConnection) connection;
+            givenAwayConnections.remove(proxyConnection);
+            availableConnections.offer(proxyConnection);
+        }
     }
 
     public void destroyPool() {
@@ -107,7 +108,10 @@ public class CustomConnectionPool {
             try {
                 availableConnections.take().realClose();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.log(Level.ERROR, "Waiting interrupted " + e.getMessage());
+            } catch (SQLException e) {
+                logger.log(Level.ERROR, "SQLException while closing connections in method destroyPool "
+                        + e.getMessage());
             }
         }
         deregisterDrivers();
@@ -119,8 +123,8 @@ public class CustomConnectionPool {
             Driver currentDriver = drivers.nextElement();
             try {
                 DriverManager.deregisterDriver(currentDriver);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (SQLException e) {
+                logger.log(Level.ERROR, "Deregister driver error " + e.getMessage());
             }
         }
     }
