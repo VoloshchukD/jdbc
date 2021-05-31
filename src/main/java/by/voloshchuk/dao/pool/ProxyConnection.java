@@ -1,4 +1,4 @@
-package dao.pool;
+package by.voloshchuk.dao.pool;
 
 import java.sql.*;
 import java.util.Map;

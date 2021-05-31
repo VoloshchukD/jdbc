@@ -1,8 +1,6 @@
-package dao.impl;
+package by.voloshchuk.dao.impl;
 
-import entity.User;
-
-import java.sql.Connection;
+import by.voloshchuk.entity.User;
 
 public class UserDaoImpl {
 

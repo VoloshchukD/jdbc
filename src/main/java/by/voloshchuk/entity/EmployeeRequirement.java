@@ -1,4 +1,4 @@
-package entity;
+package by.voloshchuk.entity;
 
 public class EmployeeRequirement extends AbstractIdentifiedEntity {
 

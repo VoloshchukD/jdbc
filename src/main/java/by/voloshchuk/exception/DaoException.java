@@ -1,4 +1,4 @@
-package exception;
+package by.voloshchuk.exception;
 
 public class DaoException extends Exception {
 

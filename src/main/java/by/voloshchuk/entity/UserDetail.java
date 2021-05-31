@@ -1,4 +1,4 @@
-package entity;
+package by.voloshchuk.entity;
 
 public class UserDetail extends AbstractIdentifiedEntity {
 
@@ -10,7 +10,7 @@ public class UserDetail extends AbstractIdentifiedEntity {
 
     private String position;
 
-    private String experience;
+    private Integer experience;
 
     private Integer salary;
 
@@ -48,11 +48,11 @@ public class UserDetail extends AbstractIdentifiedEntity {
         this.position = position;
     }
 
-    public String getExperience() {
+    public Integer getExperience() {
         return experience;
     }
 
-    public void setExperience(String experience) {
+    public void setExperience(Integer experience) {
         this.experience = experience;
     }
 
@@ -70,5 +70,18 @@ public class UserDetail extends AbstractIdentifiedEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDetail{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", company='" + company + '\'' +
+                ", position='" + position + '\'' +
+                ", experience=" + experience +
+                ", salary=" + salary +
+                ", status='" + status + '\'' +
+                '}';
     }
 }
