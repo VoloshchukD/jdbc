@@ -18,7 +18,7 @@ final class ConstantColumnName {
 
     public static final String USER_DETAIL_PRIMARY_SKILL = "primary_skill";
 
-    public static final String USER_DETAIL_SKILLS = "skills";
+    public static final String USER_DETAIL_SKILLS_DESCRIPTION = "skills_description";
 
     public static final String USER_DETAIL_SALARY = "salary";
 
@@ -30,7 +30,7 @@ final class ConstantColumnName {
 
     public static final String USER_ROLE = "role";
 
-    public static final String USERS_USER_DETAIL_ID = "user_details_id";
+    public static final String USERS_USER_DETAIL_ID = "user_detail_id";
 
     public static final String EMPLOYEE_REQUIREMENT_ID = "employee_requirement_id";
 
@@ -45,6 +45,16 @@ final class ConstantColumnName {
     public static final String EMPLOYEE_REQUIREMENT_COMMENT = "comment";
 
     public static final String EMPLOYEE_REQUIREMENT_TECHNICAL_TASK_ID = "technical_task_id";
+
+    public static final String PROJECT_ID = "project_id";
+
+    public static final String PROJECT_START_DATE = "start_date";
+
+    public static final String PROJECT_STATUS = "status";
+
+    public static final String PROJECT_PAYMENT = "payment";
+
+    public static final String PROJECT_TECHNICAL_TASK_ID = "technical_task_id";
 
     private ConstantColumnName() {
     }

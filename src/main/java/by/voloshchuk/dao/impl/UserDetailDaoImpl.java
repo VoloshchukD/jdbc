@@ -2,7 +2,6 @@ package by.voloshchuk.dao.impl;
 
 import by.voloshchuk.dao.UserDetailDao;
 import by.voloshchuk.dao.pool.CustomConnectionPool;
-import by.voloshchuk.entity.EmployeeRequirement;
 import by.voloshchuk.entity.UserDetail;
 import by.voloshchuk.exception.DaoException;
 
@@ -10,19 +9,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class UserDetailDaoImpl implements UserDetailDao {
 
     private static final String SQL_ADD_USER_DETAIL = "INSERT INTO user_details (first_name, " +
-            "last_name, company, position, experience, salary, primary_skill, skills, status) " +
+            "last_name, company, position, experience, salary, primary_skill, skills_description, status) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static final String SQL_FIND_USER_DETAIL_BY_ID = "SELECT * FROM user_details WHERE id = ?";
 
     private static final String SQL_UPDATE_USER_DETAIL = "UPDATE user_details SET first_name = ?, " +
             "last_name = ?, company = ?, position = ?, experience = ?, salary = ?, primary_skill = ?, " +
-            "skills = ?, status = ? WHERE user_detail_id = ?";
+            "skills_description = ?, status = ? WHERE user_detail_id = ?";
 
     private static final String SQL_DELETE_USER_DETAIL = "DELETE FROM user_details WHERE user_detail_id = ?";
 
@@ -39,7 +37,7 @@ public class UserDetailDaoImpl implements UserDetailDao {
             statement.setString(5, userDetail.getExperience().toString());
             statement.setString(6, userDetail.getSalary().toString());
             statement.setString(7, userDetail.getPrimarySkill());
-            statement.setString(8, userDetail.getSkills());
+            statement.setString(8, userDetail.getSkillsDescription());
             statement.setString(9, userDetail.getStatus());
             isAdded = statement.executeUpdate() == 1;
         } catch (SQLException e) {
@@ -64,7 +62,7 @@ public class UserDetailDaoImpl implements UserDetailDao {
                 userDetail.setExperience(Integer.parseInt(resultSet.getString(ConstantColumnName.USER_DETAIL_EXPERIENCE)));
                 userDetail.setSalary(Integer.parseInt(resultSet.getString(ConstantColumnName.USER_DETAIL_SALARY)));
                 userDetail.setPrimarySkill(resultSet.getString(ConstantColumnName.USER_DETAIL_PRIMARY_SKILL));
-                userDetail.setSkills(resultSet.getString(ConstantColumnName.USER_DETAIL_SKILLS));
+                userDetail.setSkillsDescription(resultSet.getString(ConstantColumnName.USER_DETAIL_SKILLS_DESCRIPTION));
                 userDetail.setStatus(resultSet.getString(ConstantColumnName.USER_DETAIL_STATUS));
             }
         } catch (SQLException e) {
@@ -84,7 +82,7 @@ public class UserDetailDaoImpl implements UserDetailDao {
             statement.setString(5, String.valueOf(userDetail.getExperience()));
             statement.setString(6, String.valueOf(userDetail.getSalary()));
             statement.setString(7, userDetail.getPrimarySkill());
-            statement.setString(8, userDetail.getSkills());
+            statement.setString(8, userDetail.getSkillsDescription());
             statement.setString(9, userDetail.getStatus());
             statement.setString(10, String.valueOf(userDetail.getId()));
             int result = statement.executeUpdate();

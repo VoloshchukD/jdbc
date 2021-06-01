@@ -18,7 +18,7 @@ public class UserDetail extends AbstractIdentifiedEntity {
 
     private String primarySkill;
 
-    private String skills;
+    private String skillsDescription;
 
     public String getFirstName() {
         return firstName;
@@ -84,12 +84,12 @@ public class UserDetail extends AbstractIdentifiedEntity {
         this.primarySkill = primarySkill;
     }
 
-    public String getSkills() {
-        return skills;
+    public String getSkillsDescription() {
+        return skillsDescription;
     }
 
-    public void setSkills(String skills) {
-        this.skills = skills;
+    public void setSkillsDescription(String skillsDescription) {
+        this.skillsDescription = skillsDescription;
     }
 
     @Override
@@ -103,7 +103,7 @@ public class UserDetail extends AbstractIdentifiedEntity {
                 ", salary=" + salary +
                 ", status='" + status + '\'' +
                 ", primarySkill='" + primarySkill + '\'' +
-                ", skills='" + skills + '\'' +
+                ", skillsDescription='" + skillsDescription + '\'' +
                 '}';
     }
 

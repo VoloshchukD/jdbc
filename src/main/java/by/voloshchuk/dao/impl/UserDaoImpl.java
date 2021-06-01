@@ -17,7 +17,7 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
 
     private static final String SQL_ADD_USER = "INSERT INTO users (login, " +
-            "password, role, user_details_id) VALUES (?, ?, ?, ?)";
+            "password, role, user_detail_id) VALUES (?, ?, ?, ?)";
 
     private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM users WHERE user_id = ?";
 
@@ -26,7 +26,7 @@ public class UserDaoImpl implements UserDao {
             "AND experience >= ? AND salary <= ? AND position = ?";
 
     private static final String SQL_UPDATE_USER = "UPDATE users SET login = ?, " +
-            "password = ?, role = ?, user_details_id = ? WHERE user_id = ?";
+            "password = ?, role = ?, user_detail_id = ? WHERE user_id = ?";
 
     private static final String SQL_DELETE_USER = "DELETE FROM users WHERE user_id = ?";
 
