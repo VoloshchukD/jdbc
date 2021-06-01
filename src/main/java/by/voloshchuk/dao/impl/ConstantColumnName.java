@@ -2,7 +2,7 @@ package by.voloshchuk.dao.impl;
 
 final class ConstantColumnName {
 
-    public static final String ID = "id";
+    public static final String USER_DETAIL_ID = "user_detail_id";
 
     public static final String USER_DETAIL_FIRST_NAME = "first_name";
 
@@ -14,9 +14,37 @@ final class ConstantColumnName {
 
     public static final String USER_DETAIL_EXPERIENCE = "experience";
 
+    public static final String USER_DETAIL_STATUS = "status";
+
+    public static final String USER_DETAIL_PRIMARY_SKILL = "primary_skill";
+
+    public static final String USER_DETAIL_SKILLS = "skills";
+
     public static final String USER_DETAIL_SALARY = "salary";
 
-    public static final String USER_DETAIL_STATUS = "status";
+    public static final String USER_ID = "user_id";
+
+    public static final String USER_LOGIN = "login";
+
+    public static final String USER_PASSWORD = "password";
+
+    public static final String USER_ROLE = "role";
+
+    public static final String USERS_USER_DETAIL_ID = "user_details_id";
+
+    public static final String EMPLOYEE_REQUIREMENT_ID = "employee_requirement_id";
+
+    public static final String EMPLOYEE_REQUIREMENT_EXPERIENCE = "experience";
+
+    public static final String EMPLOYEE_REQUIREMENT_SALARY = "salary";
+
+    public static final String EMPLOYEE_REQUIREMENT_QUALIFICATION = "qualification";
+
+    public static final String EMPLOYEE_REQUIREMENT_PRIMARY_SKILL = "primary_skill";
+
+    public static final String EMPLOYEE_REQUIREMENT_COMMENT = "comment";
+
+    public static final String EMPLOYEE_REQUIREMENT_TECHNICAL_TASK_ID = "technical_task_id";
 
     private ConstantColumnName() {
     }

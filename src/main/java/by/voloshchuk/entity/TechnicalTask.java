@@ -1,6 +1,7 @@
 package by.voloshchuk.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class TechnicalTask extends AbstractIdentifiedEntity {
 
@@ -12,6 +13,46 @@ public class TechnicalTask extends AbstractIdentifiedEntity {
 
     private User customer;
 
+    private List<EmployeeRequirement> requirements;
 
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public Integer getWorkersAmount() {
+        return workersAmount;
+    }
+
+    public void setWorkersAmount(Integer workersAmount) {
+        this.workersAmount = workersAmount;
+    }
+
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
+
+    public List<EmployeeRequirement> getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(List<EmployeeRequirement> requirements) {
+        this.requirements = requirements;
+    }
 
 }

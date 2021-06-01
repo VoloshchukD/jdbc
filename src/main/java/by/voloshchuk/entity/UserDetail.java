@@ -16,6 +16,10 @@ public class UserDetail extends AbstractIdentifiedEntity {
 
     private String status;
 
+    private String primarySkill;
+
+    private String skills;
+
     public String getFirstName() {
         return firstName;
     }
@@ -72,6 +76,22 @@ public class UserDetail extends AbstractIdentifiedEntity {
         this.status = status;
     }
 
+    public String getPrimarySkill() {
+        return primarySkill;
+    }
+
+    public void setPrimarySkill(String primarySkill) {
+        this.primarySkill = primarySkill;
+    }
+
+    public String getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
+
     @Override
     public String toString() {
         return "UserDetail{" +
@@ -82,6 +102,9 @@ public class UserDetail extends AbstractIdentifiedEntity {
                 ", experience=" + experience +
                 ", salary=" + salary +
                 ", status='" + status + '\'' +
+                ", primarySkill='" + primarySkill + '\'' +
+                ", skills='" + skills + '\'' +
                 '}';
     }
+
 }

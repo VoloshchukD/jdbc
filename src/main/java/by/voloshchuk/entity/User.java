@@ -41,4 +41,15 @@ public class User extends AbstractIdentifiedEntity {
     public void setUserDetail(UserDetail userDetail) {
         this.userDetail = userDetail;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", userDetail=" + userDetail +
+                '}';
+    }
+
 }
