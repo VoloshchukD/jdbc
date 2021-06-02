@@ -56,6 +56,30 @@ final class ConstantColumnName {
 
     public static final String PROJECT_TECHNICAL_TASK_ID = "technical_task_id";
 
+    public static final String TECHNICAL_TASK_ID = "technical_task_id";
+
+    public static final String TECHNICAL_TASK_OVERVIEW = "overview";
+
+    public static final String TECHNICAL_TASK_DEADLINE = "deadline";
+
+    public static final String TECHNICAL_TASK_WORKERS_AMOUNT = "workers_amount";
+
+    public static final String TECHNICAL_TASK_CUSTOMER_ID = "customer_id";
+
+    public static final String TASK_ID = "task_id";
+
+    public static final String TASK_NAME = "name";
+
+    public static final String TASK_DETAILS = "details";
+
+    public static final String TASK_HOURS = "hours";
+
+    public static final String TASK_STATUS = "status";
+
+    public static final String TASK_PROJECT_ID = "project_id";
+
+    public static final String TASK_DEVELOPER_ID = "developer_id";
+
     private ConstantColumnName() {
     }
 

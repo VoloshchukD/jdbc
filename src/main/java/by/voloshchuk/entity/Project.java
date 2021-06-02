@@ -60,10 +60,7 @@ public class Project extends AbstractIdentifiedEntity {
         return "Project{" +
                 "startDate=" + startDate +
                 ", status='" + status + '\'' +
-                ", payment=" + payment +
-                ", technicalTask=" + technicalTask +
-                ", employees=" + employees +
-                '}';
+                ", payment=" + payment;
     }
 
 }

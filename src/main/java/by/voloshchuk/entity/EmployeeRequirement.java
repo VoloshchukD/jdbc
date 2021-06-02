@@ -69,7 +69,6 @@ public class EmployeeRequirement extends AbstractIdentifiedEntity {
                 ", salary=" + salary +
                 ", qualification='" + qualification + '\'' +
                 ", comment='" + comment + '\'' +
-                ", technicalTask=" + technicalTask +
                 ", primarySkill='" + primarySkill + '\'' +
                 '}';
     }

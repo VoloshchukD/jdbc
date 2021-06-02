@@ -55,4 +55,12 @@ public class TechnicalTask extends AbstractIdentifiedEntity {
         this.requirements = requirements;
     }
 
+    @Override
+    public String toString() {
+        return "TechnicalTask{" +
+                "overview='" + overview + '\'' +
+                ", deadline=" + deadline +
+                ", workersAmount=" + workersAmount;
+    }
+
 }
