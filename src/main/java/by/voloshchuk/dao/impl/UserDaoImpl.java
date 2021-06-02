@@ -19,7 +19,9 @@ public class UserDaoImpl implements UserDao {
     private static final String SQL_ADD_USER = "INSERT INTO users (login, " +
             "password, role, user_detail_id) VALUES (?, ?, ?, ?)";
 
-    private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM users WHERE user_id = ?";
+    private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM users INNER JOIN user_details " +
+            "ON users.user_detail_id = user_details.user_detail_id " +
+            "WHERE user_id = ?";
 
     private static final String SQL_FIND_USER_BY_REQUIREMENT = "SELECT * FROM users " +
             "INNER JOIN user_details ON users.user_id = user_details.user_detail_id WHERE role='developer' " +
@@ -32,23 +34,15 @@ public class UserDaoImpl implements UserDao {
 
     private CustomConnectionPool connectionPool = CustomConnectionPool.getInstance();
 
-    private UserDetailDaoImpl userDetailDao;
-
-    public UserDaoImpl(UserDetailDaoImpl userDetailDao) {
-        this.userDetailDao = userDetailDao;
-    }
-
     public boolean addUser(User user) throws DaoException {
         boolean isAdded = false;
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_ADD_USER)) {
-            if (userDetailDao.addUserDetail(user.getUserDetail())) {
-                statement.setString(1, user.getLogin());
-                statement.setString(2, user.getPassword());
-                statement.setString(3, user.getRole());
-                statement.setString(4, String.valueOf(user.getUserDetail().getId()));
-                isAdded = statement.executeUpdate() == 1;
-            }
+            statement.setString(1, user.getLogin());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getRole());
+            statement.setString(4, String.valueOf(user.getUserDetail().getId()));
+            isAdded = statement.executeUpdate() == 1;
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -67,8 +61,18 @@ public class UserDaoImpl implements UserDao {
                 user.setLogin(resultSet.getString(ConstantColumnName.USER_LOGIN));
                 user.setPassword(resultSet.getString(ConstantColumnName.USER_PASSWORD));
                 user.setRole(resultSet.getString(ConstantColumnName.USER_ROLE));
-                long userDetailsId = Long.parseLong(resultSet.getString(ConstantColumnName.USERS_USER_DETAIL_ID));
-                UserDetail userDetail = userDetailDao.findUserDetailById(userDetailsId);
+
+                UserDetail userDetail = new UserDetail();
+                userDetail.setId(Long.valueOf(resultSet.getString(ConstantColumnName.USER_DETAIL_ID)));
+                userDetail.setFirstName(resultSet.getString(ConstantColumnName.USER_DETAIL_FIRST_NAME));
+                userDetail.setLastName(resultSet.getString(ConstantColumnName.USER_DETAIL_LAST_NAME));
+                userDetail.setCompany(resultSet.getString(ConstantColumnName.USER_DETAIL_COMPANY));
+                userDetail.setPosition(resultSet.getString(ConstantColumnName.USER_DETAIL_POSITION));
+                userDetail.setExperience(Integer.parseInt(resultSet.getString(ConstantColumnName.USER_DETAIL_EXPERIENCE)));
+                userDetail.setSalary(Integer.parseInt(resultSet.getString(ConstantColumnName.USER_DETAIL_SALARY)));
+                userDetail.setPrimarySkill(resultSet.getString(ConstantColumnName.USER_DETAIL_PRIMARY_SKILL));
+                userDetail.setSkillsDescription(resultSet.getString(ConstantColumnName.USER_DETAIL_SKILLS_DESCRIPTION));
+                userDetail.setStatus(resultSet.getString(ConstantColumnName.USER_DETAIL_STATUS));
                 user.setUserDetail(userDetail);
             }
         } catch (SQLException e) {
@@ -103,13 +107,8 @@ public class UserDaoImpl implements UserDao {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_DELETE_USER)) {
             User user = findUserById(id);
-            Long userDetailId = user.getUserDetail().getId();
-            
             statement.setString(1, String.valueOf(id));
             isRemoved = statement.executeUpdate() == 1;
-            if (isRemoved) {
-                userDetailDao.removeUserDetailById(userDetailId);
-            }
         } catch (SQLException e) {
             throw new DaoException(e);
         }

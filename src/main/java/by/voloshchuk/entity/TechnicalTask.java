@@ -60,7 +60,9 @@ public class TechnicalTask extends AbstractIdentifiedEntity {
         return "TechnicalTask{" +
                 "overview='" + overview + '\'' +
                 ", deadline=" + deadline +
-                ", workersAmount=" + workersAmount;
+                ", workersAmount=" + workersAmount +
+                ", customer=" + customer +
+//                ", requirements=" + requirements +
+                '}';
     }
-
 }

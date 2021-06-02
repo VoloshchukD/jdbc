@@ -16,7 +16,7 @@ public class UserDetailDaoImpl implements UserDetailDao {
             "last_name, company, position, experience, salary, primary_skill, skills_description, status) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    private static final String SQL_FIND_USER_DETAIL_BY_ID = "SELECT * FROM user_details WHERE id = ?";
+    private static final String SQL_FIND_USER_DETAIL_BY_ID = "SELECT * FROM user_details WHERE user_detail_id = ?";
 
     private static final String SQL_UPDATE_USER_DETAIL = "UPDATE user_details SET first_name = ?, " +
             "last_name = ?, company = ?, position = ?, experience = ?, salary = ?, primary_skill = ?, " +
