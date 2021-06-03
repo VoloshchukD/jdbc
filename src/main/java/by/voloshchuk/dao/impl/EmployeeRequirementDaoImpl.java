@@ -100,7 +100,7 @@ public class EmployeeRequirementDaoImpl implements EmployeeRequirementDao {
                 userDetail.setStatus(resultSet.getString(ConstantColumnName.USER_DETAIL_STATUS));
                 user.setUserDetail(userDetail);
                 technicalTask.setCustomer(user);
-                technicalTask.setRequirements(findAllByTechnicalTaskId(technicalTask));
+                technicalTask.setRequirements(findAllByTechnicalTask(technicalTask));
                 requirement.setTechnicalTask(technicalTask);
 
             }
@@ -110,7 +110,7 @@ public class EmployeeRequirementDaoImpl implements EmployeeRequirementDao {
         return requirement;
     }
 
-    public List<EmployeeRequirement> findAllByTechnicalTaskId(TechnicalTask technicalTask) throws DaoException {
+    public List<EmployeeRequirement> findAllByTechnicalTask(TechnicalTask technicalTask) throws DaoException {
         List<EmployeeRequirement> requirements = new ArrayList<>();
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_BY_TECHNICAL_TASK_ID)) {

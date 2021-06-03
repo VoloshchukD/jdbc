@@ -2,6 +2,8 @@ package by.voloshchuk.dao.impl;
 
 import by.voloshchuk.dao.pool.CustomConnectionPool;
 import by.voloshchuk.entity.TechnicalTask;
+import by.voloshchuk.entity.User;
+import by.voloshchuk.entity.UserDetail;
 import by.voloshchuk.exception.DaoException;
 
 import java.sql.*;
@@ -12,8 +14,14 @@ public class TechnicalTaskDaoImpl {
             "deadline, workers_amount, customer_id) " +
             "VALUES (?, ?, ?, ?)";
 
-    private static final String SQL_FIND_TECHNICAL_TASK_BY_ID = "SELECT * FROM technical_tasks " +
-            "WHERE technical_task_id = ?";
+//    private static final String SQL_FIND_TECHNICAL_TASK_BY_ID = "SELECT * FROM technical_tasks " +
+//            "WHERE technical_task_id = ?";
+
+    private static final String SQL_FIND_TECHNICAL_TASK_BY_ID =
+            "SELECT * FROM technical_tasks INNER JOIN users " +
+                    "ON users.user_id = technical_tasks.customer_id " +
+                    "INNER JOIN user_details ON users.user_id = user_details.user_detail_id " +
+                    "WHERE technical_tasks.technical_task_id = ?";
 
     private static final String SQL_UPDATE_TECHNICAL_TASK = "UPDATE technical_tasks SET overview = ?, " +
             "deadline = ?, workers_amount = ?, customer_id = ? WHERE technical_task_id = ?";
@@ -54,7 +62,24 @@ public class TechnicalTaskDaoImpl {
                 technicalTask.setWorkersAmount(Integer.parseInt(resultSet.getString(
                         ConstantColumnName.TECHNICAL_TASK_WORKERS_AMOUNT)));
 
-
+                User user = new User();
+                user.setId(Long.valueOf(resultSet.getString(ConstantColumnName.USER_ID)));
+                user.setLogin(resultSet.getString(ConstantColumnName.USER_LOGIN));
+                user.setPassword(resultSet.getString(ConstantColumnName.USER_PASSWORD));
+                user.setRole(resultSet.getString(ConstantColumnName.USER_ROLE));
+                UserDetail userDetail = new UserDetail();
+                userDetail.setId(Long.valueOf(resultSet.getString(ConstantColumnName.USER_DETAIL_ID)));
+                userDetail.setFirstName(resultSet.getString(ConstantColumnName.USER_DETAIL_FIRST_NAME));
+                userDetail.setLastName(resultSet.getString(ConstantColumnName.USER_DETAIL_LAST_NAME));
+                userDetail.setCompany(resultSet.getString(ConstantColumnName.USER_DETAIL_COMPANY));
+                userDetail.setPosition(resultSet.getString(ConstantColumnName.USER_DETAIL_POSITION));
+                userDetail.setExperience(Integer.parseInt(resultSet.getString(ConstantColumnName.USER_DETAIL_EXPERIENCE)));
+                userDetail.setSalary(Integer.parseInt(resultSet.getString(ConstantColumnName.USER_DETAIL_SALARY)));
+                userDetail.setPrimarySkill(resultSet.getString(ConstantColumnName.USER_DETAIL_PRIMARY_SKILL));
+                userDetail.setSkillsDescription(resultSet.getString(ConstantColumnName.USER_DETAIL_SKILLS_DESCRIPTION));
+                userDetail.setStatus(resultSet.getString(ConstantColumnName.USER_DETAIL_STATUS));
+                user.setUserDetail(userDetail);
+                technicalTask.setCustomer(user);
             }
         } catch (SQLException e) {
             throw new DaoException(e);
