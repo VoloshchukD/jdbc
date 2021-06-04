@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>JSP - Hello World</title>
-    <link rel="stylesheet" href="./webix/webix.css" type="text/css" media="screen" charset="utf-8">
-    <script src="./pages/header.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./webix/webix.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="./libs/webix/webix.css" type="text/css" media="screen" charset="utf-8">
+    <script src="./js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./libs/webix/webix.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 <script>
