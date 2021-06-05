@@ -10,12 +10,18 @@ import java.io.IOException;
 
 public class HelloServlet extends HttpServlet {
 
+    private static final CommandProvider provider = CommandProvider.getInstance();
+
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
-    public void destroy() {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("req param name");
+        Command command = provider.getCommand(name);
+        command.execute(req, resp);
     }
 
 }
