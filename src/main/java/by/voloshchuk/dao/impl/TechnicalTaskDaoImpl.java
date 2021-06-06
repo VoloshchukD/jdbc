@@ -64,7 +64,7 @@ public class TechnicalTaskDaoImpl {
 
                 User user = new User();
                 user.setId(Long.valueOf(resultSet.getString(ConstantColumnName.USER_ID)));
-                user.setLogin(resultSet.getString(ConstantColumnName.USER_LOGIN));
+                user.setEmail(resultSet.getString(ConstantColumnName.USER_EMAIL));
                 user.setPassword(resultSet.getString(ConstantColumnName.USER_PASSWORD));
                 user.setRole(resultSet.getString(ConstantColumnName.USER_ROLE));
                 UserDetail userDetail = new UserDetail();

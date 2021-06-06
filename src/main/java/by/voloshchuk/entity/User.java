@@ -2,7 +2,7 @@ package by.voloshchuk.entity;
 
 public class User extends AbstractIdentifiedEntity {
 
-    private String login;
+    private String email;
 
     private String password;
 
@@ -10,12 +10,12 @@ public class User extends AbstractIdentifiedEntity {
 
     private UserDetail userDetail;
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -45,7 +45,7 @@ public class User extends AbstractIdentifiedEntity {
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
+                "login='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 ", userDetail=" + userDetail +

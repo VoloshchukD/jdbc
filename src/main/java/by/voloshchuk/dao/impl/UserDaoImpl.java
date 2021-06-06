@@ -16,7 +16,7 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao {
 
-    private static final String SQL_ADD_USER = "INSERT INTO users (login, " +
+    private static final String SQL_ADD_USER = "INSERT INTO users (email, " +
             "password, role, user_detail_id) VALUES (?, ?, ?, ?)";
 
     private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM users INNER JOIN user_details " +
@@ -27,7 +27,7 @@ public class UserDaoImpl implements UserDao {
             "INNER JOIN user_details ON users.user_id = user_details.user_detail_id WHERE role='developer' " +
             "AND experience >= ? AND salary <= ? AND position = ?";
 
-    private static final String SQL_UPDATE_USER = "UPDATE users SET login = ?, " +
+    private static final String SQL_UPDATE_USER = "UPDATE users SET email = ?, " +
             "password = ?, role = ?, user_detail_id = ? WHERE user_id = ?";
 
     private static final String SQL_DELETE_USER = "DELETE FROM users WHERE user_id = ?";
@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao {
         boolean isAdded = false;
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_ADD_USER)) {
-            statement.setString(1, user.getLogin());
+            statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getRole());
             statement.setString(4, String.valueOf(user.getUserDetail().getId()));
@@ -58,7 +58,7 @@ public class UserDaoImpl implements UserDao {
             user = new User();
             if (resultSet.next()) {
                 user.setId(Long.valueOf(resultSet.getString(ConstantColumnName.USER_ID)));
-                user.setLogin(resultSet.getString(ConstantColumnName.USER_LOGIN));
+                user.setEmail(resultSet.getString(ConstantColumnName.USER_EMAIL));
                 user.setPassword(resultSet.getString(ConstantColumnName.USER_PASSWORD));
                 user.setRole(resultSet.getString(ConstantColumnName.USER_ROLE));
 
@@ -86,7 +86,7 @@ public class UserDaoImpl implements UserDao {
         User resultUser = null;
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_USER)) {
-            statement.setString(1, user.getLogin());
+            statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getRole());
             statement.setString(4, String.valueOf(user.getUserDetail().getId()));
@@ -138,7 +138,7 @@ public class UserDaoImpl implements UserDao {
                 userDetail.setStatus(resultSet.getString(ConstantColumnName.USER_DETAIL_STATUS));
 
                 user.setId(Long.valueOf(resultSet.getString(ConstantColumnName.USER_ID)));
-                user.setLogin(resultSet.getString(ConstantColumnName.USER_LOGIN));
+                user.setEmail(resultSet.getString(ConstantColumnName.USER_EMAIL));
                 user.setPassword(resultSet.getString(ConstantColumnName.USER_PASSWORD));
                 user.setRole(resultSet.getString(ConstantColumnName.USER_ROLE));
                 user.setUserDetail(userDetail);

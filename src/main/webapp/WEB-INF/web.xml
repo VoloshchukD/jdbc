@@ -17,4 +17,12 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
+
+
+
+    <taglib>
+        <taglib-uri>letsCodeTags</taglib-uri>
+        <taglib-location>/WEB-INF/letscode-tags.tld</taglib-location>
+    </taglib>
+
 </web-app>

@@ -1,6 +1,5 @@
 package by.voloshchuk;
 
-import by.voloshchuk.dao.EmployeeRequirementDao;
 import by.voloshchuk.dao.impl.*;
 import by.voloshchuk.dao.pool.CustomConnectionPool;
 import by.voloshchuk.entity.*;
@@ -18,7 +17,7 @@ public class Runner {
         ///////////////////////////////////////////////
 
         UserDetail userDetail = new UserDetail();
-        userDetail.setId(12L);
+        userDetail.setId(10L);
         userDetail.setFirstName("hhh");
         userDetail.setLastName("hhh");
         userDetail.setCompany("hhh");
@@ -37,16 +36,16 @@ public class Runner {
         ///////////////////////////////////////////
 
         User user = new User();
-        user.setId(1L);
-        user.setLogin("AAAAAA");
+        user.setId(12L);
+        user.setEmail("AAAAAA");
         user.setPassword("hhh");
         user.setRole("developer");
         user.setUserDetail(userDetail);
-//        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
 //        System.out.println(userDaoImpl.addUser(user));
-//        System.out.println(userDaoImpl.findUserById(7L));
+//        System.out.println(userDaoImpl.findUserById(12L));
 //        System.out.println(userDaoImpl.updateUser(user));
-//        System.out.println(userDaoImpl.removeUserById(12L));
+        System.out.println(userDaoImpl.removeUserById(12L));
 
         /////////////////////////////////////////////////////////////////
         ///////////////     EMPLOYEE_REQUIREMENTS     ///////////////////
@@ -78,9 +77,9 @@ public class Runner {
         technicalTask.setRequirements(list);
         technicalTask.setWorkersAmount(1);
 
-        TechnicalTaskDaoImpl technicalTaskDao = new TechnicalTaskDaoImpl();
+//        TechnicalTaskDaoImpl technicalTaskDao = new TechnicalTaskDaoImpl();
 //        System.out.println(technicalTaskDao.addTechnicalTask(technicalTask));
-        System.out.println(technicalTaskDao.findTechnicalTaskById(1L));
+//        System.out.println(technicalTaskDao.findTechnicalTaskById(1L));
 //        System.out.println(technicalTaskDao.updateTechnicalTask(technicalTask));
 //        System.out.println(technicalTaskDao.removeTechnicalTask(7L));
 

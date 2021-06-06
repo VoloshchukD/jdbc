@@ -13,7 +13,7 @@ class ConnectionProperty {
 
     private static final Logger logger = LogManager.getLogger();
 
-    private static final String PROPERTIES_FILE_NAME = "database.properties";
+    private static final String PROPERTIES_FILE_NAME = "src/main/resources/database.properties";
 
     private static final String DRIVER_CLASS_NAME_PROPERTY_NAME = "driver.class.name";
 
