@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<!--    <welcome-file-list>-->
-<!--        <welcome-file>index.jsp</welcome-file>-->
-<!--    </welcome-file-list>-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
@@ -17,12 +17,16 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
+    <jsp-config>
+        <taglib>
+            <taglib-uri>
+                /WEB-INF/tld/taglib.tld
+            </taglib-uri>
 
-
-
-    <taglib>
-        <taglib-uri>letsCodeTags</taglib-uri>
-        <taglib-location>/WEB-INF/letscode-tags.tld</taglib-location>
-    </taglib>
+            <taglib-location>
+                /WEB-INF/tld/taglib.tld
+            </taglib-location>
+        </taglib>
+    </jsp-config>
 
 </web-app>
