@@ -1,5 +1,6 @@
 package by.voloshchuk.dao.pool;
 
+import by.voloshchuk.exception.WebAppRuntimeException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -61,7 +62,7 @@ public class CustomConnectionPool {
         }
         if (availableConnections.size() == 0) {
             logger.log(Level.FATAL, "Connection pool is created without connections");
-            throw new RuntimeException("Connection pool is not created");
+            throw new WebAppRuntimeException("Connection pool is not created");
         }
 
         //TODO если соединений меньше чем в файле досоздать до нужного количества

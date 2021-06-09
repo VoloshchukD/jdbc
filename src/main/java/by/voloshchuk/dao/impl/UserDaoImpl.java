@@ -23,6 +23,8 @@ public class UserDaoImpl implements UserDao {
             "ON users.user_detail_id = user_details.user_detail_id " +
             "WHERE user_id = ?";
 
+    //TODO WHERE teams.users.role='developer' AND teams.user_details.experience >= 1
+    // AND teams.user_details.salary <= 10000 AND teams.user_details.primary_skill = "Node.js"
     private static final String SQL_FIND_USER_BY_REQUIREMENT = "SELECT * FROM users " +
             "INNER JOIN user_details ON users.user_id = user_details.user_detail_id WHERE role='developer' " +
             "AND experience >= ? AND salary <= ? AND position = ?";

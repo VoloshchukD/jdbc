@@ -1,5 +1,6 @@
 package by.voloshchuk.dao.pool;
 
+import by.voloshchuk.exception.WebAppRuntimeException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,13 +8,14 @@ import org.apache.logging.log4j.Logger;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 class ConnectionProperty {
 
     private static final Logger logger = LogManager.getLogger();
 
-    private static final String PROPERTIES_FILE_NAME = "src/main/resources/database.properties";
+    private static final String PROPERTIES_FILE_NAME = "database.properties";
 
     private static final String DRIVER_CLASS_NAME_PROPERTY_NAME = "driver.class.name";
 
@@ -27,16 +29,16 @@ class ConnectionProperty {
 
     static {
         Properties properties = new Properties();
-        FileInputStream inputStream = null;
+        InputStream inputStream = null;
         try {
-            inputStream = new FileInputStream(PROPERTIES_FILE_NAME);
+            inputStream = ConnectionProperty.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE_NAME);
             properties.load(inputStream);
         } catch (FileNotFoundException e) {
             logger.log(Level.FATAL, "File with database properties is not found " + e.getMessage());
-            throw new RuntimeException("Properties file is not found");
+            throw new WebAppRuntimeException("Properties file is not found");
         } catch (IOException e) {
             logger.log(Level.FATAL, "Properties in file are not found " + e.getMessage());
-            throw new RuntimeException("Database properties are not found");
+            throw new WebAppRuntimeException("Database properties are not found");
         } finally {
             if (inputStream != null) {
                 try {

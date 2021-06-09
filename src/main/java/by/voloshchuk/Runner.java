@@ -43,9 +43,9 @@ public class Runner {
         user.setUserDetail(userDetail);
         UserDaoImpl userDaoImpl = new UserDaoImpl();
 //        System.out.println(userDaoImpl.addUser(user));
-//        System.out.println(userDaoImpl.findUserById(12L));
+        System.out.println(userDaoImpl.findUserById(10L));
 //        System.out.println(userDaoImpl.updateUser(user));
-        System.out.println(userDaoImpl.removeUserById(12L));
+//        System.out.println(userDaoImpl.removeUserById(12L));
 
         /////////////////////////////////////////////////////////////////
         ///////////////     EMPLOYEE_REQUIREMENTS     ///////////////////
