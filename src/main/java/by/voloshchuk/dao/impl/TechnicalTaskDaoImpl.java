@@ -7,7 +7,12 @@ import by.voloshchuk.entity.UserDetail;
 import by.voloshchuk.exception.DaoException;
 
 import java.sql.*;
-
+//TECHNICAL_TASKS//
+//        INSERT INTO `teams`.`technical_tasks` (`overview`, `deadline`, `workers_amount`, `status`, `customer_id`) VALUES ('Legacy code bug fix and patch', '2022-07-24 12:00:00', '2', 'WAIT_PROJECT', '4');
+//        UPDATE `teams`.`technical_tasks` SET `overview` = 'Legacy code bug fix and patch', `deadline` = '2023-11-18 19:00:00', `workers_amount` = '2', `status` = 'ON_PROJECT' WHERE (`technical_task_id` = '1');
+//        DELETE FROM `teams`.`technical_tasks` WHERE (`technical_task_id` = '10');
+//for user-customer to view his technical tasks
+//        SELECT * FROM teams.technical_tasks WHERE teams.technical_tasks.customer_id = 1
 public class TechnicalTaskDaoImpl {
 
     private static final String SQL_ADD_TECHNICAL_TASK = "INSERT INTO technical_tasks (overview, " +

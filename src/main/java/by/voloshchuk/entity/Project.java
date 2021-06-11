@@ -7,7 +7,7 @@ public class Project extends AbstractIdentifiedEntity {
 
     private Date startDate;
 
-    private String status;
+    private String state;
 
     private Integer payment;
 
@@ -23,12 +23,12 @@ public class Project extends AbstractIdentifiedEntity {
         this.startDate = startDate;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Integer getPayment() {
@@ -59,7 +59,7 @@ public class Project extends AbstractIdentifiedEntity {
     public String toString() {
         return "Project{" +
                 "startDate=" + startDate +
-                ", status='" + status + '\'' +
+                ", state='" + state + '\'' +
                 ", payment=" + payment;
     }
 

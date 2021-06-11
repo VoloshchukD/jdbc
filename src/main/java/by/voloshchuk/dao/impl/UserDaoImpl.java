@@ -13,6 +13,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+//USERS//
+//INSERT INTO `teams`.`users` (`email`, `password`, `role`, `user_detail_id`) VALUES ('sato1224@gmail.com', 'qwq34g34erty123', 'customer', '1');
+//        UPDATE `teams`.`users` SET `password` = 'zsdbdgh' WHERE (`user_id` = '1');
+//        DELETE FROM `teams`.`users` WHERE (`user_id` = '1');
+//        SELECT * FROM teams.users WHERE email='sato1224@gmail.com'
+//for user-manager to find developers for project
+//        SELECT * FROM teams.users INNER JOIN teams.user_details ON teams.users.user_id = teams.user_details.user_detail_id WHERE teams.users.role='developer' AND teams.user_details.experience >= 1
+//        AND teams.user_details.salary <= 10000 AND teams.user_details.primary_skill = "C"
+//for user-manager to look for work
+//        SELECT * FROM teams.technical_tasks WHERE teams.technical_tasks.status = 'WAITING_PROJECT'
+
+//MAPS//
+//        INSERT INTO `teams`.`user_project_maps` (`project_id`, `user_id`) VALUES ('1', '3');
+//        DELETE FROM `teams`.`user_project_maps` WHERE (`user_project_map_id` = '1');
 
 public class UserDaoImpl implements UserDao {
 

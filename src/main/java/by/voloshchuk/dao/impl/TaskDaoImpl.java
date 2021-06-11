@@ -7,6 +7,10 @@ import by.voloshchuk.entity.User;
 import by.voloshchuk.exception.DaoException;
 
 import java.sql.*;
+//TASKS//
+//        INSERT INTO `teams`.`tasks` (`name`, `details`, `hours`, `status`, `project_id`, `developer_id`) VALUES ('Refactoring', 'Service and controller logics refactoring in UM module', '1', 'In progress', '1', '1');
+//        UPDATE `teams`.`tasks` SET `name` = 'Refactoring', `details` = 'Service and controller logics refactoring in UM module', `hours` = '5', `status` = 'DONE', `developer_id` = '1' WHERE (`task_id` = '1');
+//        DELETE FROM `teams`.`tasks` WHERE (`task_id` = '1');
 
 public class TaskDaoImpl {
 

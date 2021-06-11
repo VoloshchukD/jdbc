@@ -5,16 +5,22 @@ import by.voloshchuk.entity.Project;
 import by.voloshchuk.exception.DaoException;
 
 import java.sql.*;
+//PROJECTS//
+//        INSERT INTO `teams`.`projects` (`start_date`, `state`, `technical_task_id`) VALUES ('2020-12-31 08:40:00', 'IN_PROGRESS','1');
+//        UPDATE `teams`.`projects` SET `state` = 'FINISHED' WHERE (`project_id` = '1');
+//        DELETE FROM `teams`.`projects` WHERE (`project_id` = '1');
+//for all users to find their projects
+//        SELECT * FROM teams.projects INNER JOIN teams.user_project_maps ON teams.projects.project_id=teams.user_project_maps.project_id WHERE teams.user_project_maps.user_id = 1
 
 public class ProjectDaoImpl {
 
     private static final String SQL_ADD_PROJECT = "INSERT INTO projects (start_date, " +
-            "status, payment, technical_task_id) " +
+            "state, payment, technical_task_id) " +
             "VALUES (?, ?, ?, ?)";
 
     private static final String SQL_FIND_PROJECT_BY_ID = "SELECT * FROM projects WHERE project_id = ?";
 
-    private static final String SQL_UPDATE_PROJECT = "UPDATE projects SET start_date = ?, status = ?," +
+    private static final String SQL_UPDATE_PROJECT = "UPDATE projects SET start_date = ?, state = ?," +
             " payment = ?, technical_task_id = ? WHERE project_id = ?";
 
     private static final String SQL_DELETE_PROJECT = "DELETE FROM projects WHERE project_id = ?";
@@ -26,7 +32,7 @@ public class ProjectDaoImpl {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_ADD_PROJECT)) {
             statement.setTimestamp(1, new Timestamp(project.getStartDate().getTime()));
-            statement.setString(2, project.getStatus());
+            statement.setString(2, project.getState());
             statement.setString(3, String.valueOf(project.getPayment()));
             statement.setString(4, String.valueOf(project.getTechnicalTask().getId()));
             isAdded = statement.executeUpdate() == 1;
@@ -49,7 +55,7 @@ public class ProjectDaoImpl {
                 Timestamp timestamp = resultSet.getTimestamp(ConstantColumnName.PROJECT_START_DATE);
                 Date date = new Date(timestamp.getTime());
                 project.setStartDate(date);
-                project.setStatus(resultSet.getString(ConstantColumnName.PROJECT_STATUS));
+                project.setState(resultSet.getString(ConstantColumnName.PROJECT_STATE));
                 project.setPayment(Integer.parseInt(resultSet.getString(ConstantColumnName.PROJECT_PAYMENT)));
 //              TODO  project.setTechnicalTask();
 
@@ -65,7 +71,7 @@ public class ProjectDaoImpl {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_PROJECT)) {
             statement.setTimestamp(1, new Timestamp(project.getStartDate().getTime()));
-            statement.setString(2, project.getStatus());
+            statement.setString(2, project.getState());
             statement.setString(3, String.valueOf(project.getPayment()));
             statement.setString(4, String.valueOf(project.getTechnicalTask().getId()));
             statement.setString(5, String.valueOf(project.getId()));

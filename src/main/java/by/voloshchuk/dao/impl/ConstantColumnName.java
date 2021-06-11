@@ -50,7 +50,7 @@ final class ConstantColumnName {
 
     public static final String PROJECT_START_DATE = "start_date";
 
-    public static final String PROJECT_STATUS = "status";
+    public static final String PROJECT_STATE = "state";
 
     public static final String PROJECT_PAYMENT = "payment";
 
@@ -63,6 +63,8 @@ final class ConstantColumnName {
     public static final String TECHNICAL_TASK_DEADLINE = "deadline";
 
     public static final String TECHNICAL_TASK_WORKERS_AMOUNT = "workers_amount";
+
+    public static final String TECHNICAL_TASK_STATUS = "status";
 
     public static final String TECHNICAL_TASK_CUSTOMER_ID = "customer_id";
 
@@ -79,6 +81,16 @@ final class ConstantColumnName {
     public static final String TASK_PROJECT_ID = "project_id";
 
     public static final String TASK_DEVELOPER_ID = "developer_id";
+
+    public static final String BILL_ID = "bill_id";
+
+    public static final String BILL_STATUS = "status";
+
+    public static final String BILL_INFORMATION = "information";
+
+    public static final String BILL_AMOUNT_DUE = "amount_due";
+
+    public static final String BILL_PROJECT_ID = "project_id";
 
     private ConstantColumnName() {
     }

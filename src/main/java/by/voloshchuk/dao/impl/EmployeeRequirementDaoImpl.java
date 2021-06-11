@@ -11,6 +11,10 @@ import by.voloshchuk.exception.DaoException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+//EMPLOYEE_REQUIREMENTS//
+//        INSERT INTO `teams`.`employee_requirements` (`experience`, `salary`, `qualification`, `primary_skill`, `comment`, `technical_task_id`) VALUES ('4', '100', 'Backend Developer', 'Java', '-', '1');
+//        UPDATE `teams`.`employee_requirements` SET `experience` = '5', `salary` = '120', `qualification` = 'Backend Developer', `primary_skill` = '.Net', `comment` = 'JUnit, Git & English C1' WHERE (`employee_requirement_id` = '1');
+//        DELETE FROM `teams`.`employee_requirements` WHERE (`employee_requirement_id` = '1');
 
 public class EmployeeRequirementDaoImpl implements EmployeeRequirementDao {
 
