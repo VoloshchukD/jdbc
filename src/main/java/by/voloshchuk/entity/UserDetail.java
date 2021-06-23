@@ -1,5 +1,7 @@
 package by.voloshchuk.entity;
 
+import java.util.Objects;
+
 public class UserDetail extends AbstractIdentifiedEntity {
 
     private String firstName;
@@ -14,11 +16,11 @@ public class UserDetail extends AbstractIdentifiedEntity {
 
     private Integer salary;
 
-    private String status;
-
     private String primarySkill;
 
     private String skillsDescription;
+
+    private String status;
 
     public String getFirstName() {
         return firstName;
@@ -93,18 +95,36 @@ public class UserDetail extends AbstractIdentifiedEntity {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDetail that = (UserDetail) o;
+        return Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName)
+                && Objects.equals(company, that.company) && Objects.equals(position, that.position)
+                && Objects.equals(experience, that.experience) && Objects.equals(salary, that.salary)
+                && Objects.equals(primarySkill, that.primarySkill)
+                && Objects.equals(skillsDescription, that.skillsDescription)
+                && Objects.equals(status, that.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, company, position,
+                experience, salary, primarySkill, skillsDescription, status);
+    }
+
+    @Override
     public String toString() {
-        return "UserDetail{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", company='" + company + '\'' +
-                ", position='" + position + '\'' +
+        return getClass().getName() +
+                "@firstName='" + firstName +
+                ", lastName='" + lastName +
+                ", company='" + company +
+                ", position='" + position +
                 ", experience=" + experience +
                 ", salary=" + salary +
-                ", status='" + status + '\'' +
-                ", primarySkill='" + primarySkill + '\'' +
-                ", skillsDescription='" + skillsDescription + '\'' +
-                '}';
+                ", primarySkill='" + primarySkill +
+                ", skillsDescription='" + skillsDescription +
+                ", status='" + status;
     }
 
 }

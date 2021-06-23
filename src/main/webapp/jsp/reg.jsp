@@ -1,179 +1,183 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" href="./libs/webix/webix.css" type="text/css" media="screen" charset="utf-8">
-    <script src="./js/header.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./libs/webix/webix.js" type="text/javascript" charset="utf-8"></script>
+    <title>Checkout example for Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css" >
 </head>
-<body>
+<body class="bg-light">
 
-<script>
-    webix.ui({
-        rows: [
-            getHeader(),
-            {
-                id: 1622740907326,
-                cols: [
-                    { view: "template", template: "You can place any widget here..", role: "placeholder" },
-                    {
-                        autoheight: false,
-                        view: "form",
-                        rows: [
-                            {
-                                label: "Registration",
-                                view: "label",
-                                height: 38,
-                                borderless: 0,
-                                align: "center",
-                                id: 1622740907327
-                            },
-                            {
-                                view: "text",
-                                label: "Email",
-                                name: "email",
-                                height: 38,
-                                id: 1622740907328,
-                                type: "email"
-                            },
-                            { label: "Password", view: "text", height: 38, id: 1622740907329, type: "password" },
-                            { view: "text", name: "name", label: "First name", id: 1622740907330, type: "text" },
-                            { label: "Last name", "view": "text", "height": 38, "id": 1622740907331, type: "text" },
-                            { label: "Company", "view": "text", "height": 38, "id": 1622740907332, type: "text" },
-                            {
-                                label: "Role",
-                                view: "select",
-                                options:[
-                                    { id:1, value:"Customer" },
-                                    { id:2, value:"Manager" },
-                                    { id:3, value:"Developer" }
-                                ],
-                                height: 38,
-                                id: 1622740907333
-                            },
-                            { label: "Position", view: "text", height: 38, id: 1622740907334, type: "text" },
-                            {
-                                label: "Experience",
-                                view: "text",
-                                height: 38,
-                                id: 1622740907335,
-                                type: "number",
-                                placeholder: "years"
-                            },
-                            {
-                                label: "Salary",
-                                view: "text",
-                                height: 38,
-                                id: 1622740907336,
-                                type: "number",
-                                placeholder: "$"
-                            },
-                            {
-                                label: "Primary skill",
-                                view: "text",
-                                height: 38,
-                                id: 1622740907337,
-                                type: "text",
-                                placeholder: "Exmpl: Node.js"
-                            },
-                            { label: "Skills description", view: "textarea", id: 1622740907338 },
-                            { view: "button", css: "webix_primary", label: "Save", id: 1622740907339 }
-                        ]
-                    },
-                    { view: "template", template: "You can place any widget here..", role: "placeholder" }
-                ]
-            }
-        ]
-    });
-</script>
-<%--<script>--%>
-<%--    webix.ui({--%>
-<%--        rows: [--%>
-<%--            {--%>
-<%--                id: 1622785188193,--%>
-<%--                rows: [--%>
-<%--                    {--%>
-<%--                        height: 53,--%>
-<%--                        cols: [--%>
-<%--                            {--%>
-<%--                                view: "button",--%>
-<%--                                height: 52,--%>
-<%--                                type: "image",--%>
-<%--                                borderless: true,--%>
-<%--                                disabled: true,--%>
-<%--                                image: "file:///C:/Users/pagubnoe/Desktop/logo.png"--%>
-<%--                            },--%>
-<%--                            { view: "template", role: placeholder, borderless: true },--%>
-<%--                            { view: "template", role: placeholder, borderless: 1 },--%>
-<%--                            { view: "template", role: placeholder, borderless: 1 },--%>
-<%--                            { label: "Sign in", view: button, height: 52, borderless: 1 },--%>
-<%--                            { label: "Sign up", view: button, height: 52, borderless: 1 }--%>
-<%--                        ]--%>
-<%--                    },--%>
-<%--                    {--%>
-<%--                        cols: [--%>
-<%--                            { view: "template", role: "placeholder", id: 1622785185676, borderless: true },--%>
-<%--                            {--%>
-<%--                                rows: [--%>
-<%--                                    {--%>
-<%--                                        height: 0,--%>
-<%--                                        cols: [--%>
-<%--                                            {--%>
-<%--                                                label: "image",--%>
-<%--                                                view: "button",--%>
-<%--                                                height: 0,--%>
-<%--                                                borderless: true,--%>
-<%--                                                type: "image",--%>
-<%--                                                disabled: true--%>
-<%--                                            },--%>
-<%--                                            { view: "label", height: 0, borderless: 1 }--%>
-<%--                                        ]--%>
-<%--                                    },--%>
-<%--                                    {--%>
-<%--                                        height: 193,--%>
-<%--                                        cols: [--%>
-<%--                                            { label: "Label", view: "label", height: 0, borderless: 1 },--%>
-<%--                                            {--%>
-<%--                                                label: "Image",--%>
-<%--                                                view: "button",--%>
-<%--                                                height: 0,--%>
-<%--                                                type: "image",--%>
-<%--                                                disabled: true,--%>
-<%--                                                borderless: true--%>
-<%--                                            }--%>
-<%--                                        ]--%>
-<%--                                    },--%>
-<%--                                    {--%>
-<%--                                        height: 223,--%>
-<%--                                        cols: [--%>
-<%--                                            {--%>
-<%--                                                label: "image",--%>
-<%--                                                view: "button",--%>
-<%--                                                height: 0,--%>
-<%--                                                borderless: true,--%>
-<%--                                                type: "image",--%>
-<%--                                                disabled: true--%>
-<%--                                            },--%>
-<%--                                            {--%>
-<%--                                                rows: [--%>
-<%--                                                    { label: "Label", view: "label", height: 0, borderless: 1 },--%>
-<%--                                                    { label: "Create account", view: "button", height: 38 }--%>
-<%--                                                ],--%>
-<%--                                                height: 0--%>
-<%--                                            }--%>
-<%--                                        ]--%>
-<%--                                    }--%>
-<%--                                ],--%>
-<%--                                width: 681--%>
-<%--                            },--%>
-<%--                            { view: "template", role: "placeholder", id: 1622785185682, width: 169, borderless: true }--%>
-<%--                        ],--%>
-<%--                        height: 0--%>
-<%--                    }--%>
-<%--                ]--%>
-<%--            }--%>
-<%--        ]--%>
-<%--    });--%>
-<%--</script>--%>
+<div class="container">
+    <div class="py-5 text-center">
+        <p class="frame">
+            <img class="d-block mx-auto mb-4" src="/images/logo.png" alt="" width="100" height="100">
+        </p>
+        <h4>Join Teams</h4>
+        <h2>Create your account</h2>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Billing address</h4>
+            <form class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Last name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="username" placeholder="Username" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Your username is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                    <div class="invalid-feedback">
+                        Please enter your shipping address.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">Country</label>
+                        <select class="custom-select d-block w-100" id="country" required>
+                            <option value="">Choose...</option>
+                            <option>United States</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="state">State</label>
+                        <select class="custom-select d-block w-100" id="state" required>
+                            <option value="">Choose...</option>
+                            <option>California</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="zip">Zip</label>
+                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="same-address">
+                    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="save-info">
+                    <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                </div>
+                <hr class="mb-4">
+
+                <h4 class="mb-3">Payment</h4>
+
+                <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                        <label class="custom-control-label" for="credit">Credit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="debit">Debit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="paypal">Paypal</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-name">Name on card</label>
+                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                        <small class="text-muted">Full name as displayed on card</small>
+                        <div class="invalid-feedback">
+                            Name on card is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-number">Credit card number</label>
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Credit card number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">Expiration</label>
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Expiration date required
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">CVV</label>
+                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Security code required
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2018 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </body>
 </html>

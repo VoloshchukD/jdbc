@@ -5,10 +5,7 @@ import by.voloshchuk.dao.pool.CustomConnectionPool;
 import by.voloshchuk.entity.UserDetail;
 import by.voloshchuk.exception.DaoException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 //USER_DETAILS//
 //        INSERT INTO `teams`.`user_details` (`first_name`, `last_name`, `company`, `position`, `experience`, `salary`, `primary_skill` , `skills_description`, `status`)
 //        VALUES ('Tobias', 'Richter', 'IBM', 'Full stack Developer', '12', '60', 'Node.js,', 'Node.js, React.js, HTML/CSS/DOM/JS (ES6), Git, Jira.', 'busy');
@@ -35,17 +32,24 @@ public class UserDetailDaoImpl implements UserDetailDao {
     public boolean addUserDetail(UserDetail userDetail) throws DaoException {
         boolean isAdded = false;
         try (Connection connection = connectionPool.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_ADD_USER_DETAIL)) {
+             PreparedStatement statement = connection.prepareStatement(SQL_ADD_USER_DETAIL,
+                     Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, userDetail.getFirstName());
             statement.setString(2, userDetail.getLastName());
             statement.setString(3, userDetail.getCompany());
             statement.setString(4, userDetail.getPosition());
-            statement.setString(5, userDetail.getExperience().toString());
-            statement.setString(6, userDetail.getSalary().toString());
+            statement.setInt(5, userDetail.getExperience());
+            statement.setInt(6, userDetail.getSalary());
             statement.setString(7, userDetail.getPrimarySkill());
             statement.setString(8, userDetail.getSkillsDescription());
             statement.setString(9, userDetail.getStatus());
             isAdded = statement.executeUpdate() == 1;
+            if (isAdded) {
+                ResultSet resultSet = statement.getGeneratedKeys();
+                resultSet.next();
+                long userDetailsId = resultSet.getInt(1);
+                userDetail.setId(userDetailsId);
+            }
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -85,12 +89,12 @@ public class UserDetailDaoImpl implements UserDetailDao {
             statement.setString(2, userDetail.getLastName());
             statement.setString(3, userDetail.getCompany());
             statement.setString(4, userDetail.getPosition());
-            statement.setString(5, String.valueOf(userDetail.getExperience()));
-            statement.setString(6, String.valueOf(userDetail.getSalary()));
+            statement.setInt(5, userDetail.getExperience());
+            statement.setInt(6, userDetail.getSalary());
             statement.setString(7, userDetail.getPrimarySkill());
             statement.setString(8, userDetail.getSkillsDescription());
             statement.setString(9, userDetail.getStatus());
-            statement.setString(10, String.valueOf(userDetail.getId()));
+            statement.setLong(10, userDetail.getId());
             int result = statement.executeUpdate();
             if (result == 1) {
                 resultUserDetail = userDetail;
@@ -105,7 +109,7 @@ public class UserDetailDaoImpl implements UserDetailDao {
         boolean isRemoved = false;
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_DELETE_USER_DETAIL)) {
-            statement.setString(1, String.valueOf(id));
+            statement.setLong(1, id);
             isRemoved = statement.executeUpdate() == 1;
         } catch (SQLException e) {
             throw new DaoException(e);

@@ -1,4 +1,4 @@
-package by.voloshchuk.servlet;
+package by.voloshchuk.servlet.command;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

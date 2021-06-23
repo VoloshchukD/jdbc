@@ -1,26 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
-<%@ taglib uri="/WEB-INF/tld/taglib.tld" prefix="mytag"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="header.jsp" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Insert title here</title>
+    <title>Main</title>
 </head>
 <body>
+<div class="container-xxl">
+    <div class="row">
+        <div class="col-8">col-8</div>
+        <div class="col-4">col-4</div>
+    </div>
+</div>
 
-<jsp:useBean id="userbean" class="by.voloshchuk.JSPSetBean" scope="request" />
-
-<mytag:jspset set="${userbean}" />
-
-<br/>
-
-<mytag:bodyjspset num="${userbean.size}">
-    ${userbean.element}
-</mytag:bodyjspset>
 
 </body>
 </html>
-

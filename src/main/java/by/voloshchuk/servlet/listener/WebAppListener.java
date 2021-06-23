@@ -1,4 +1,4 @@
-package by.voloshchuk.listener;
+package by.voloshchuk.servlet.listener;
 
 import by.voloshchuk.dao.pool.CustomConnectionPool;
 
@@ -9,7 +9,7 @@ public class WebAppListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        CustomConnectionPool.getInstance();
+//        CustomConnectionPool.getInstance();
     }
 
     @Override

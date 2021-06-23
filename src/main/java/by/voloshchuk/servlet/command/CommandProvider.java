@@ -1,4 +1,4 @@
-package by.voloshchuk.servlet;
+package by.voloshchuk.servlet.command;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +10,7 @@ public class CommandProvider {
     private Map<CommandName, Command> commands = new HashMap<>();
 
     private CommandProvider() {
+        commands.put(CommandName.MAIN, new MainCommand());
         commands.put(CommandName.REGISTRATION, new RegistrationCommand());
         commands.put(CommandName.AUTHORIZATION, new AuthorizationCommand());
     }
@@ -21,9 +22,9 @@ public class CommandProvider {
     public Command getCommand(String commandName) {
         //TODO парсинг строки url тк html должен писаться через abc-asd
         // <input type="hidden" name="command" value="registration">
-        CommandName name = CommandName.valueOf(commandName);
+        CommandName name = CommandName.valueOf(commandName.toUpperCase());
         Command command;
-        if (null != name) {
+        if (name != null) {
             command = commands.get(name);
         } else {
             command = commands.get(CommandName.NO_SUCH_COMMAND);
