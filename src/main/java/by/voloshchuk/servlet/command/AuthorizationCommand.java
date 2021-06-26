@@ -9,7 +9,14 @@ public class AuthorizationCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("auth");
+        if (request.getMethod().equals("POST")) {
+            System.out.println("auth " + request.getAttribute("email"));
+            System.out.println("auth " + request.getParameter("password"));
+
+            response.sendRedirect("http://localhost:8080/controller?command=main");
+        } else if (request.getMethod().equals("GET")) {
+            request.getRequestDispatcher("/jsp/auth.jsp").forward(request, response);
+        }
     }
 
 }

@@ -21,11 +21,11 @@
             <small>Teams</small>
         </a>
         <div class="d-flex">
-            <button type="button" class="btn btn-outline-secondary me-3" onclick="window.location.href='/jsp/auth.jsp'">
-                Login
-            </button>
-            <button type="button" class="btn btn-outline-primary me-3" onclick="window.location.href='/jsp/reg.jsp'">
+            <button type="button" class="btn btn-outline-secondary me-3" onclick="window.location.href='/controller?command=authorization'">
                 Sign in
+            </button>
+            <button type="button" class="btn btn-outline-primary me-3" onclick="window.location.href='/controller?command=registration'">
+                Sign up
             </button>
 
             <ul class="navbar-nav">

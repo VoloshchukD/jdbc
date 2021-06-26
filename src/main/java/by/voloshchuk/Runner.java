@@ -4,6 +4,7 @@ import by.voloshchuk.dao.impl.*;
 import by.voloshchuk.dao.pool.CustomConnectionPool;
 import by.voloshchuk.entity.*;
 import by.voloshchuk.exception.DaoException;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,19 +13,20 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) throws SQLException, DaoException {
 
+
         ///////////////////////////////////////////////
         ////////////     USER_DETAILS      ////////////
         ///////////////////////////////////////////////
 
-        UserDetail userDetail = new UserDetail();
-        userDetail.setId(10L);
-        userDetail.setFirstName("hhh");
-        userDetail.setLastName("hhh");
-        userDetail.setCompany("hhh");
-        userDetail.setPosition("hhh");
-        userDetail.setExperience(8);
-        userDetail.setSalary(12);
-        userDetail.setStatus("hhh");
+//        UserDetail userDetail = new UserDetail();
+//        userDetail.setId(10L);
+//        userDetail.setFirstName("hhh");
+//        userDetail.setLastName("hhh");
+//        userDetail.setCompany("hhh");
+//        userDetail.setPosition("hhh");
+//        userDetail.setExperience(8);
+//        userDetail.setSalary(12);
+//        userDetail.setStatus("hhh");
 //        UserDetailDaoImpl userDetailDao = new UserDetailDaoImpl();
 //        System.out.println(userDetailDao.addUserDetail(userDetail));
 //        System.out.println(userDetailDao.findUserDetailById(7L));
@@ -35,15 +37,15 @@ public class Runner {
         //////////////     USER      //////////////
         ///////////////////////////////////////////
 
-        User user = new User();
-        user.setId(12L);
-        user.setEmail("AAAAAA");
-        user.setPassword("hhh");
-        user.setRole("developer");
-        user.setUserDetail(userDetail);
-        UserDaoImpl userDaoImpl = new UserDaoImpl();
+//        User user = new User();
+//        user.setId(12L);
+//        user.setEmail("AAAAAA");
+//        user.setPassword("hhh");
+//        user.setRole("developer");
+//        user.setUserDetail(userDetail);
+//        UserDaoImpl userDaoImpl = new UserDaoImpl();
 //        System.out.println(userDaoImpl.addUser(user));
-        System.out.println(userDaoImpl.findUserById(10L));
+//        System.out.println(userDaoImpl.findUserById(10L));
 //        System.out.println(userDaoImpl.updateUser(user));
 //        System.out.println(userDaoImpl.removeUserById(12L));
 
@@ -51,8 +53,8 @@ public class Runner {
         ///////////////     EMPLOYEE_REQUIREMENTS     ///////////////////
         /////////////////////////////////////////////////////////////////
 
-        EmployeeRequirement requirement = new EmployeeRequirement();
-        requirement.setId(12L);
+//        EmployeeRequirement requirement = new EmployeeRequirement();
+//        requirement.setId(12L);
 //        requirement.setQualification("Software Developer");
 //        requirement.setComment("");
 //        requirement.setPrimarySkill("sfs");
@@ -64,18 +66,18 @@ public class Runner {
         ///////////////     TECHNICAL_TASK     //////////////////////////
         /////////////////////////////////////////////////////////////////
 
-        TechnicalTask technicalTask = new TechnicalTask();
-        requirement.setTechnicalTask(technicalTask);
-        technicalTask.setId(1L);
-        technicalTask.setCustomer(user);
-        java.util.Date incomingValue2 = new java.util.Date(System.currentTimeMillis());
-        java.sql.Date databaseValue2 = new java.sql.Date(incomingValue2.getTime());
-        technicalTask.setDeadline(databaseValue2);
-        technicalTask.setOverview("AAAA");
-        List<EmployeeRequirement> list = new ArrayList<>();
-        list.add(requirement);
-        technicalTask.setRequirements(list);
-        technicalTask.setWorkersAmount(1);
+//        TechnicalTask technicalTask = new TechnicalTask();
+//        requirement.setTechnicalTask(technicalTask);
+//        technicalTask.setId(1L);
+//        technicalTask.setCustomer(user);
+//        java.util.Date incomingValue2 = new java.util.Date(System.currentTimeMillis());
+//        java.sql.Date databaseValue2 = new java.sql.Date(incomingValue2.getTime());
+//        technicalTask.setDeadline(databaseValue2);
+//        technicalTask.setOverview("AAAA");
+//        List<EmployeeRequirement> list = new ArrayList<>();
+//        list.add(requirement);
+//        technicalTask.setRequirements(list);
+//        technicalTask.setWorkersAmount(1);
 
 //        TechnicalTaskDaoImpl technicalTaskDao = new TechnicalTaskDaoImpl();
 //        System.out.println(technicalTaskDao.addTechnicalTask(technicalTask));
@@ -128,8 +130,8 @@ public class Runner {
 //        System.out.println(taskDao.updateTask(task));
 //        System.out.println(taskDao.removeTask(11L));
 
-        CustomConnectionPool pool = CustomConnectionPool.getInstance();
-        pool.destroyPool();
+//        CustomConnectionPool pool = CustomConnectionPool.getInstance();
+//        pool.destroyPool();
 
     }
 }

@@ -1,26 +1,50 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8" />
     <title>Checkout example for Bootstrap</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/main.css" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 </head>
 <body class="bg-light">
 
-<div class="container">
+<div class="container-xxl">
     <div class="py-5 text-center">
         <p class="frame">
-            <img class="d-block mx-auto mb-4" src="/images/logo.png" alt="" width="100" height="100">
+            <img class="d-block mx-auto mb-3" src="/images/logo.png" alt="" width="100" height="100">
         </p>
         <h4>Join Teams</h4>
         <h2>Create your account</h2>
     </div>
 
     <div class="row">
+        <div class="col-3">
 
-        <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Billing address</h4>
-            <form class="needs-validation" novalidate>
+        </div>
+
+        <div class="col-6">
+
+            <form method="POST" action="controller" enctype="text/plain" >
+                <input type="hidden" name="command" value="registration" id="command"/>
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="" required>
+                    <div class="invalid-feedback">
+                        Please enter your email.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password">Password </label>
+                    <input type="password" class="form-control" id="password" placeholder="">
+                    <div class="invalid-feedback">
+                        Please enter a valid password
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
@@ -39,145 +63,84 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="username">Username</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">@</span>
-                        </div>
-                        <input type="text" class="form-control" id="username" placeholder="Username" required>
-                        <div class="invalid-feedback" style="width: 100%;">
-                            Your username is required.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <label for="company">Company</label>
+                    <input type="text" class="form-control" id="company" placeholder="" required>
                     <div class="invalid-feedback">
-                        Please enter a valid email address for shipping updates.
+                        Please enter your company.
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                    <label for="position">Position</label>
+                    <input type="text" class="form-control" id="position" placeholder="" required>
                     <div class="invalid-feedback">
-                        Please enter your shipping address.
+                        Please enter your position.
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    <label for="role">Role</label>
+                    <select class="form-select" aria-label="Default select example" id="role">
+                        <option value="1">Manager</option>
+                        <option value="2">Developer</option>
+                        <option value="3">Customer</option>
+                    </select>
+
                 </div>
 
                 <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
-                            <option value="">Choose...</option>
-                            <option>United States</option>
-                        </select>
+                    <div class="col-md-4 mb-3">
+                        <label for="experience">Experience</label>
+                        <input type="text" class="form-control" id="experience" placeholder="" value="" required>
                         <div class="invalid-feedback">
-                            Please select a valid country.
+                            Valid first name is required.
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="state">State</label>
-                        <select class="custom-select d-block w-100" id="state" required>
-                            <option value="">Choose...</option>
-                            <option>California</option>
-                        </select>
+                        <label for="salary">Salary</label>
+                        <input type="text" class="form-control" id="salary" placeholder="" value="" required>
                         <div class="invalid-feedback">
-                            Please provide a valid state.
+                            Valid last name is required.
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                    <div class="col-md-4 mb-3">
+                        <label for="primary">Primary skill</label>
+                        <input type="text" class="form-control" id="primary" placeholder="" value="" required>
                         <div class="invalid-feedback">
-                            Zip code required.
+                            Valid last name is required.
                         </div>
                     </div>
                 </div>
-                <hr class="mb-4">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="same-address">
-                    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="save-info">
-                    <label class="custom-control-label" for="save-info">Save this information for next time</label>
-                </div>
-                <hr class="mb-4">
 
-                <h4 class="mb-3">Payment</h4>
+                <div class="row">
 
-                <div class="d-block my-3">
-                    <div class="custom-control custom-radio">
-                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                        <label class="custom-control-label" for="credit">Credit card</label>
+                    <div class="col mb-3">
+                        <label for="skillsDescription">Skills description</label>
+                        <textarea class="form-control" aria-label="With textarea" id="skillsDescription"></textarea>
                     </div>
-                    <div class="custom-control custom-radio">
-                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                        <label class="custom-control-label" for="debit">Debit card</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                        <label class="custom-control-label" for="paypal">Paypal</label>
-                    </div>
+
                 </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="cc-name">Name on card</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                        <small class="text-muted">Full name as displayed on card</small>
-                        <div class="invalid-feedback">
-                            Name on card is required
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="cc-number">Credit card number</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Credit card number is required
-                        </div>
-                    </div>
+
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
                 </div>
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <label for="cc-expiration">Expiration</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Expiration date required
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="cc-expiration">CVV</label>
-                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Security code required
-                        </div>
-                    </div>
-                </div>
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+
             </form>
+        </div>
+        <div class="col-3">
+
+
         </div>
     </div>
 
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2017-2018 Company Name</p>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Privacy</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-            <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-    </footer>
+
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
 </body>
 </html>

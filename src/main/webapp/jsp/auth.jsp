@@ -1,29 +1,66 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>
+    <meta charset="UTF-8" />
+    <title>Checkout example for Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    </title>
 </head>
-<body>
+<body class="bg-light">
 
-<form action="${pageContext.request.contextPath}/hello" method="post">
-<div >
-    <div >
-        <h4>Sign In to Teams</h4>
+<div class="container-xxl">
+    <div class="py-4 text-center">
+        <p class="frame">
+            <img class="d-block mx-auto mb-3" src="/images/logo.png" alt="" width="100" height="100">
+        </p>
+        <h4>Join Teams</h4>
+        <h2>Create your account</h2>
     </div>
-    <div>
-        <input type="email" placeholder="email">
+
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+
+        <div class="col-6">
+
+            <form method="POST" action="controller" >
+                <input type="hidden" name="command" value="authorization" id="command"/>
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="" required>
+                    <div class="invalid-feedback">
+                        Please enter your email.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password">Password </label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="">
+                    <div class="invalid-feedback">
+                        Please enter a valid password
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-3">
+
+        </div>
     </div>
-    <div >
-        <input type="password" placeholder="password">
-    </div>
-    <input type="hidden" name="command" value="authorization">
-    <div >
-        <button type="submit">Sign In</button>
-    </div>
+
+
 </div>
-</form>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
 </body>
 </html>
