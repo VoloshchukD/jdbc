@@ -102,6 +102,7 @@ public class CustomConnectionPool {
             givenAwayConnections.remove(proxyConnection);
             availableConnections.offer(proxyConnection);
         }
+        //TODO throw exception если пытаются вернуть не родное соединение
     }
 
     public void destroyPool() {

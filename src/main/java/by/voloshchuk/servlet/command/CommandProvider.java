@@ -11,6 +11,7 @@ public class CommandProvider {
 
     private CommandProvider() {
         commands.put(CommandName.MAIN, new MainCommand());
+        commands.put(CommandName.ABOUT, new AboutCommand());
         commands.put(CommandName.REGISTRATION, new RegistrationCommand());
         commands.put(CommandName.AUTHORIZATION, new AuthorizationCommand());
     }
