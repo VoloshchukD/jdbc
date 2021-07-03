@@ -55,7 +55,9 @@
         </div>
     </div>
     </div>
-    <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05);">© 2021 Copyright:
+    <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05);">
+        <i class="fas fa-copyright me-1"></i>
+        2021 Copyright:
         <a class="text-reset" href="http://localhost:8080/controller?command=main">Teams</a>
     </div>
 </footer>

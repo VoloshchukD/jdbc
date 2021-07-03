@@ -11,7 +11,7 @@
 <div class="container-xxl">
     <div class="row">
         <div class="text-white my-5"
-             style="height: 250px; padding: 30px; background-image: url('https://www.teahub.io/photos/full/238-2389250_wallpaper-dubai-united-arab-emirates-skyscrapers-dubai-dual.jpg');">
+             style="height: 250px; padding: 30px; background-color: #020230; ">
             <div class="text-center">
                 <h1 class="fw-bolder pt-5">Our brief history</h1>
                 <p class="lead">Let's get to know to better understand each other. Here is our story.</p>

@@ -18,18 +18,18 @@
 <div class="container-xxl">
 
     <div class="text-white my-5"
-         style="height: 300px; padding: 30px; background-image: url('https://www.teahub.io/photos/full/238-2389250_wallpaper-dubai-united-arab-emirates-skyscrapers-dubai-dual.jpg');">
+         style="height: 330px; padding: 30px; background-color: #020230;" >
+        <img class="d-block mx-auto" src="/images/logo.png" alt="" width="100" height="100">
         <div class="text-center">
-            <h1 class="fw-bolder pt-5">Welcome to Teams</h1>
-            <p class="lead">A functional Bootstrap 5 boilerplate for one page scrolling websites</p>
-            <a class="btn btn-lg btn-light mb-5" href="#about">Get to know us better!</a>
+            <h1 class="fw-bolder pt-2">Welcome to Teams</h1>
+            <p class="lead">Application for the competent interaction of the performers team with the customer.</p>
+            <a class="btn btn-lg btn-light " href="?command=about">Get to know us better!</a>
         </div>
     </div>
 
     <section class="wow fadeIn animated" style="visibility: visible; animation-name: fadeIn;">
         <hr>
         <div class="row my-5">
-            <!-- counter -->
             <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated"
                  data-wow-duration="300ms"
                  style="visibility: visible; animation-duration: 300ms; animation-name: fadeInUp;"><i
@@ -37,62 +37,26 @@
                                                                        class="counter-number"></span> <span
                     class="timer counter alt-font appear" data-to="980" data-speed="7000">12</span>
                 <p class="counter-title">Years On The Market</p>
-            </div> <!-- end counter -->
-            <!-- counter -->
+            </div>
             <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated"
                  data-wow-duration="600ms"
                  style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;"><i
-                    class="fa fa-heart medium-icon"></i> <span class="timer counter alt-font appear" data-to="980"
-                                                               data-speed="7000">980</span> <span class="counter-title">Happy Clients</span>
-            </div> <!-- end counter -->
-            <!-- counter -->
+                    class="fa fa-graduation-cap medium-icon"></i> <span class="timer counter alt-font appear" data-to="980"
+                                                               data-speed="7000">980</span> <span class="counter-title">Average employees<p> experience</span>
+            </div>
             <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated"
                  data-wow-duration="900ms"
                  style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;"><i
                     class="fa fa-anchor medium-icon"></i> <span class="timer counter alt-font appear" data-to="810"
                                                                 data-speed="7000">810</span> <span
-                    class="counter-title">Projects Completed</span></div> <!-- end counter -->
-            <!-- counter -->
+                    class="counter-title">Projects Completed</span></div>
             <div class="col-md-3 col-sm-6 text-center counter-section wow fadeInUp animated" data-wow-duration="1200ms"
                  style="visibility: visible; animation-duration: 1200ms; animation-name: fadeInUp;"><i
                     class="fa fa-user medium-icon"></i> <span class="timer counter alt-font appear" data-to="600"
                                                               data-speed="7000">600</span> <span class="counter-title">Clients Served</span>
-            </div> <!-- end counter -->
+            </div>
         </div>
-        <hr>
-        <div class="row my-5">
-            <!-- counter -->
-            <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated"
-                 data-wow-duration="300ms"
-                 style="visibility: visible; animation-duration: 300ms; animation-name: fadeInUp;"><i
-                    class="fa fa-beer medium-icon"></i> <span id="anim-number-pizza2" class="counter-number"></span>
-                <span class="timer counter alt-font appear" data-to="980" data-speed="7000">2800</span>
-                <p class="counter-title">Beer Ordered</p>
-            </div> <!-- end counter -->
-            <!-- counter -->
-            <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated"
-                 data-wow-duration="600ms"
-                 style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;"><i
-                    class="fa fa-heart medium-icon"></i> <span class="timer counter alt-font appear" data-to="980"
-                                                               data-speed="7000">980</span> <span class="counter-title">Happy Clients</span>
-            </div> <!-- end counter -->
-            <!-- counter -->
-            <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated"
-                 data-wow-duration="900ms"
-                 style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;"><i
-                    class="fa fa-anchor medium-icon"></i> <span class="timer counter alt-font appear" data-to="810"
-                                                                data-speed="7000">810</span> <span
-                    class="counter-title">Projects Completed</span></div> <!-- end counter -->
-            <!-- counter -->
-            <div class="col-md-3 col-sm-6 text-center counter-section wow fadeInUp animated" data-wow-duration="1200ms"
-                 style="visibility: visible; animation-duration: 1200ms; animation-name: fadeInUp;"><i
-                    class="fa fa-user medium-icon"></i> <span class="timer counter alt-font appear" data-to="600"
-                                                              data-speed="7000">600</span> <span class="counter-title">Clients Served</span>
-            </div> <!-- end counter -->
-        </div>
-
     </section>
-
     <hr>
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
@@ -137,12 +101,6 @@
 </div>
 <jsp:include page="../WEB-INF/jspf/footer.jspf"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-        crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
 </body>

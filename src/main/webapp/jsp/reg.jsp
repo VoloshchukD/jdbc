@@ -9,7 +9,7 @@
 </head>
 <body class="bg-light">
 
-<div class="container-xxl">
+<div class="container-xxl" style="background-color: #D3D3D3;" >
     <div class="py-5 text-center">
         <p class="frame">
             <img class="d-block mx-auto mb-3" src="/images/logo.png" alt="" width="100" height="100">
@@ -19,11 +19,11 @@
     </div>
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
 
         </div>
 
-        <div class="col-6">
+        <div class="col-4">
 
             <form method="POST" action="controller" enctype="text/plain" >
                 <input type="hidden" name="command" value="registration" id="command"/>
@@ -124,16 +124,15 @@
                 <div class="d-flex justify-content-center">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
                 </div>
+                <div class="mt-3 text-center">
+                    Already have an account? <a href="URL">Sign in.</a>
+                </div>
 
             </form>
         </div>
-        <div class="col-3">
-
-
+        <div class="col-4">
         </div>
     </div>
-
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
