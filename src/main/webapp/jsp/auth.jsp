@@ -44,7 +44,7 @@
                     <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
                 </div>
                 <div class="mt-3 text-center">
-                    New to Teams? <a href="URL">Create an account.</a>
+                    New to Teams? <a href="?command=registration">Create an account.</a>
                 </div>
             </form>
         </div>

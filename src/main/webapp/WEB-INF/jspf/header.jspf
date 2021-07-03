@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse" id="navbarsExample03">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
+                    <a class="nav-link" href="?command=home">Home<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="?command=about">About<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="?command=about">Home<span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="?command=about">Projects<span class="sr-only"></span></a>
+                    <a class="nav-link" href="?command=projects">Projects<span class="sr-only"></span></a>
                 </li>
             </ul>
         </div>
@@ -51,12 +51,12 @@
                         />
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">My profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="?command=profile">My profile</a></li>
+                        <li><a class="dropdown-item" href="?command=settings">Settings</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="?command=logout">Logout</a></li>
                     </ul>
                 </li>
             </ul>

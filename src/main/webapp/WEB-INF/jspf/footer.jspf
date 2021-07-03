@@ -25,10 +25,10 @@
                     Information
                 </h6>
                 <p>
-                    <a href="#!" class="text-reset">About</a>
+                    <a href="?command=about" class="text-reset">About</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">Home</a>
+                    <a href="?command=home" class="text-reset">Home</a>
                 </p>
             </div>
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto my-4">
@@ -36,10 +36,10 @@
                     Useful links
                 </h6>
                 <p>
-                    <a href="#!" class="text-reset">Registration</a>
+                    <a href="?command=registration" class="text-reset">Registration</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">Authorization</a>
+                    <a href="?command=authorization" class="text-reset">Authorization</a>
                 </p>
             </div>
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 my-4">

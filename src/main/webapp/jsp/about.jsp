@@ -22,59 +22,66 @@
                 <div class="timeline">
                     <div href="" class="timeline-content">
                         <div class="timeline-year">
-                            <h3>2018</h3>
+                            <h3>2009</h3>
                         </div>
-                        <h3 class="title">Web Development</h3>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
-                            culpa
-                            dolore explicabo fuga pariatur gjkfdgj quis reprehenderit tenetur vel!</p>
+                        <h3 class="title">Foundation</h3>
+                        <p class="description">In this year at the 10s of May our company was founded by a few co founders in Minsk, Belarus.</p>
                     </div>
                 </div>
                 <div class="timeline">
                     <div href="" class="timeline-content">
                         <div class="timeline-year">
-                            <h3>2018</h3>
+                            <h3>2010</h3>
                         </div>
-                        <h3 class="title">Web Development</h3>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
-                            culpa
-                            dolore explicabo fuga pariatur gjkfdgj quis reprehenderit tenetur vel!</p>
+                        <h3 class="title">First office</h3>
+                        <p class="description">The first office with a staff of 10 employees was opened on Pervomayskaya street at that time.</p>
                     </div>
                 </div>
                 <div class="timeline">
                     <div href="" class="timeline-content">
                         <div class="timeline-year">
-                            <h3>2018</h3>
+                            <h3>2011</h3>
                         </div>
-                        <h3 class="title">Web Development</h3>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
-                            culpa
-                            dolore explicabo fuga pariatur gjkfdgj quis reprehenderit tenetur vel!</p>
+                        <h3 class="title">Small anniversary</h3>
+                        <p class="description">The first 100 customers and more than 12 regular customers with 150 successfully completed projects in total.</p>
                     </div>
                 </div>
                 <div class="timeline">
                     <div href="" class="timeline-content">
                         <div class="timeline-year">
-                            <h3>2018</h3>
+                            <h3>2013</h3>
                         </div>
-                        <h3 class="title">Web Development</h3>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
-                            culpa
-                            dolore explicabo fuga pariatur gjkfdgj quis reprehenderit tenetur vel!</p>
+                        <h3 class="title">Major project</h3>
+                        <p class="description">Large project request from a large Australian laundry detergent company.</p>
                     </div>
                 </div>
                 <div class="timeline">
                     <div href="" class="timeline-content">
                         <div class="timeline-year">
-                            <h3>2018</h3>
+                            <h3>2015</h3>
                         </div>
-                        <h3 class="title">Web Development</h3>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
-                            culpa
-                            dolore explicabo fuga pariatur gjkfdgj quis reprehenderit tenetur vel!</p>
+                        <h3 class="title">Web app start</h3>
+                        <p class="description">Application launch for client manager developer interaction with the aim of developing the final product.</p>
                     </div>
                 </div>
-
+                <div class="timeline">
+                    <div href="" class="timeline-content">
+                        <div class="timeline-year">
+                            <h3>2019</h3>
+                        </div>
+                        <h3 class="title">10th birthday</h3>
+                        <p class="description">The company celebrates its 10th birthday and does not stop there.</p>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div href="" class="timeline-content">
+                        <div class="timeline-year">
+                            <h3>2020</h3>
+                        </div>
+                        <h3 class="title">Almost worldwide</h3>
+                        <p class="description">The company works with customers from more than 20 countries around the world.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

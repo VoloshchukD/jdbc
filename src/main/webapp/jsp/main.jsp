@@ -60,40 +60,38 @@
     <hr>
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
-                                   src="https://images.unsplash.com/photo-1606044466411-207a9a49711f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                                   src="/images/customer_main.jpg"
                                    alt="..."/></div>
         <div class="col-lg-5">
-            <h1 class="font-weight-light">Business Name or Tagline</h1>
-            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it
-                makes a great use of the standard Bootstrap core components. Feel free to use this template for any
-                project you want!</p>
-            <a class="btn btn-primary" href="#!">Call to Action!</a>
+            <h1 class="font-weight-light">For those who need a development team</h1>
+            <p>If you are a customer with a product idea or some aims that are still not realized, we are ready to fulfill all your requests.
+                Our app is a great opportunity for you to get a high-quality product for the best price and in a small period of time.</p>
+            <a class="btn btn-primary" href="?command=registration">Ready to start?</a>
         </div>
     </div>
     <hr>
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-lg-5">
-            <h1 class="font-weight-light">Business Name or Tagline</h1>
-            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it
-                makes a great use of the standard Bootstrap core components. Feel free to use this template for any
-                project you want!</p>
-            <a class="btn btn-primary" href="#!">Call to Action!</a>
+            <h1 class="font-weight-light">For those who need a manager's position</h1>
+            <p>In case you are a manager with a good knowledges and rich experience. Our product development processes are always ruled by the manager.
+                We will be glad to see you in our team and reach the success together.</p>
+            <a class="btn btn-primary" href="?command=registration">Waiting for you!</a>
         </div>
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
-                                   src="https://images.unsplash.com/photo-1606044466411-207a9a49711f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                                   src="/images/manager_main.jpg"
                                    alt="..."/></div>
     </div>
     <hr>
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
-                                   src="https://images.unsplash.com/photo-1606044466411-207a9a49711f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                                   src="/images/developer_main.jpg"
                                    alt="..."/></div>
         <div class="col-lg-5">
-            <h1 class="font-weight-light">Business Name or Tagline</h1>
-            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it
-                makes a great use of the standard Bootstrap core components. Feel free to use this template for any
-                project you want!</p>
-            <a class="btn btn-primary" href="#!">Call to Action!</a>
+            <h1 class="font-weight-light">For the developers seeking employment</h1>
+            <p>If you are a top level developer with a valuable experience and you are looking for the stable source of projects,
+                you are exactly where you should be. Our Teams app provides their employees
+                a great opportunity to achieve all you want in your profession.</p>
+            <a class="btn btn-primary" href="?command=registration">Join us!</a>
         </div>
     </div>
     <hr>

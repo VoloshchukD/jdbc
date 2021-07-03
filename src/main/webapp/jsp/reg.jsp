@@ -125,7 +125,7 @@
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
                 </div>
                 <div class="mt-3 text-center">
-                    Already have an account? <a href="URL">Sign in.</a>
+                    Already have an account? <a href="?command=authorization">Sign in.</a>
                 </div>
 
             </form>
