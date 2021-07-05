@@ -1,31 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <title>Checkout example for Bootstrap</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    <fmt:setLocale value="${local}" scope="session"/>
+    <fmt:setBundle basename="local" var="loc"/>
+    <title><fmt:message bundle="${loc}" key="local.auth"/></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
 </head>
-<body class="bg-light">
-
-<div class="container-xxl" style=" background-color: #D3D3D3;" >
-
-
+<body style="background-color: #D3D3D3;" >
+<div class="container-xxl" >
     <div class="row h-100 justify-content-center">
-
-        <div class="col-4 my-auto ">
+        <div class="col-4 my-auto">
             <div class="py-4 text-center">
                 <p class="frame">
                     <img class="d-block mx-auto mb-3" src="/images/logo.png" alt="" width="100" height="100">
                 </p>
-                <h4>Join Teams</h4>
-                <h2>Create your account</h2>
+                <h4><fmt:message bundle="${loc}" key="local.hello"/></h4>
+                <h2><fmt:message bundle="${loc}" key="local.signin.welcome"/></h2>
             </div>
             <form method="POST" action="controller">
                 <input type="hidden" name="command" value="authorization" id="command"/>
                 <div class="mb-3">
-                    <label for="email">Email</label>
+                    <label for="email"><fmt:message bundle="${loc}" key="local.form.email"/></label>
                     <input type="email" name="email" class="form-control" id="email" placeholder="" required>
                     <div class="invalid-feedback">
                         Please enter your email.
@@ -33,7 +32,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password">Password </label>
+                    <label for="password"><fmt:message bundle="${loc}" key="local.form.password"/> </label>
                     <input type="password" name="password" class="form-control" id="password" placeholder="">
                     <div class="invalid-feedback">
                         Please enter a valid password
@@ -41,17 +40,16 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-lg btn-primary"><fmt:message bundle="${loc}"
+                                                                                      key="local.signin"/></button>
                 </div>
                 <div class="mt-3 text-center">
-                    New to Teams? <a href="?command=registration">Create an account.</a>
+                    <fmt:message bundle="${loc}" key="local.signin.new"/> <a href="?command=registration"><fmt:message
+                        bundle="${loc}" key="local.create"/></a>
                 </div>
             </form>
         </div>
-
     </div>
-
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

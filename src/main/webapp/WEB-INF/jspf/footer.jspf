@@ -1,9 +1,14 @@
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+    <fmt:setLocale value="${local}" scope="session" />
+    <fmt:setBundle basename="local" var="loc" />
 </head>
 <body>
 <footer class="footer footer-expand-lg footer-dark bg-dark text-white">
@@ -14,42 +19,42 @@
                     <img class="d-block mx-auto" src="/images/logo.png" alt="" width="50" height="50">
                 </p>
                 <h6 class="text-uppercase fw-bold text-center">
-                    Teams
+                    <fmt:message bundle="${loc}" key="local.app-name" />
                 </h6>
                 <p>
-                    Application for the competent interaction of the performers team with the customer.
+                    <fmt:message bundle="${loc}" key="local.slogan" />
                 </p>
             </div>
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                 <h6 class="text-uppercase fw-bold my-4">
-                    Information
+                    <fmt:message bundle="${loc}" key="local.information" />
                 </h6>
                 <p>
-                    <a href="?command=about" class="text-reset">About</a>
+                    <a href="?command=about" class="text-reset"><fmt:message bundle="${loc}" key="local.about" /></a>
                 </p>
                 <p>
-                    <a href="?command=home" class="text-reset">Home</a>
+                    <a href="?command=main" class="text-reset"><fmt:message bundle="${loc}" key="local.home" /></a>
                 </p>
             </div>
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto my-4">
                 <h6 class="text-uppercase fw-bold mb-4">
-                    Useful links
+                    <fmt:message bundle="${loc}" key="local.links" />
                 </h6>
                 <p>
-                    <a href="?command=registration" class="text-reset">Registration</a>
+                    <a href="?command=registration" class="text-reset"><fmt:message bundle="${loc}" key="local.reg" /></a>
                 </p>
                 <p>
-                    <a href="?command=authorization" class="text-reset">Authorization</a>
+                    <a href="?command=authorization" class="text-reset"><fmt:message bundle="${loc}" key="local.auth" /></a>
                 </p>
             </div>
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 my-4">
                 <h6 class="text-uppercase fw-bold mb-4">
-                    Contact
+                    <fmt:message bundle="${loc}" key="local.contact" />
                 </h6>
-                <p><i class="fas fa-home me-3"></i> Minsk, Minsk 220020, Belarus</p>
+                <p><i class="fas fa-home me-3"></i><fmt:message bundle="${loc}" key="local.postal" /></p>
                 <p>
                     <i class="fas fa-envelope me-3"></i>
-                    teams@gmail.com
+                    <fmt:message bundle="${loc}" key="local.email" />
                 </p>
             </div>
         </div>
@@ -57,8 +62,8 @@
     </div>
     <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05);">
         <i class="fas fa-copyright me-1"></i>
-        2021 Copyright:
-        <a class="text-reset" href="http://localhost:8080/controller?command=main">Teams</a>
+        <fmt:message bundle="${loc}" key="local.copyright" />
+        <a class="text-reset" href="http://localhost:8080/controller?command=main"><fmt:message bundle="${loc}" key="local.app-name" /></a>
     </div>
 </footer>
 </body>
