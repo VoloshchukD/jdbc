@@ -54,8 +54,6 @@
                         </div>
                         <h3 class="title"><fmt:message bundle="${loc}" key="local.about.header4"/></h3>
                         <p class="description"><fmt:message bundle="${loc}" key="local.about.description4"/></p>
-                        <h3 class="title"></h3>
-                        <p class="description"></p>
                     </div>
                 </div>
                 <div class="timeline">

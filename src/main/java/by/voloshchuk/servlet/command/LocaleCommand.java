@@ -9,9 +9,9 @@ public class LocaleCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("loc");
         request.getSession(true).setAttribute("local", request.getParameter("local"));
-        request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
+        String referer = request.getHeader("Referer");
+        response.sendRedirect(referer);
     }
 
 }

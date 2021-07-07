@@ -22,8 +22,6 @@ public class CommandProvider {
     }
 
     public Command getCommand(String commandName) {
-        //TODO парсинг строки url тк html должен писаться через abc-asd
-        // <input type="hidden" name="command" value="registration">
         CommandName name = CommandName.valueOf(commandName.toUpperCase());
         Command command;
         if (name != null) {

@@ -25,7 +25,7 @@
                 <input type="hidden" name="command" value="authorization" id="command"/>
                 <div class="mb-3">
                     <label for="email"><fmt:message bundle="${loc}" key="local.form.email"/></label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="" required>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="" required>
                     <div class="invalid-feedback">
                         Please enter your email.
                     </div>
@@ -33,7 +33,7 @@
 
                 <div class="mb-3">
                     <label for="password"><fmt:message bundle="${loc}" key="local.form.password"/> </label>
-                    <input type="password" name="password" class="form-control" id="password" placeholder="">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="">
                     <div class="invalid-feedback">
                         Please enter a valid password
                     </div>

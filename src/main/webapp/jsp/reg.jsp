@@ -10,10 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
-<body style="background-color: #D3D3D3;" >
+<body style="background-color: #D3D3D3;">
 <div class="container-xxl">
-    <div class="row h-100 justify-content-center" >
-        <div class="col-4  my-auto" >
+    <div class="row h-100 justify-content-center">
+        <div class="col-4  my-auto">
             <div class="py-4 text-center">
                 <p class="frame">
                     <img class="d-block mx-auto mb-3" src="/images/logo.png" alt="" width="100" height="100">
@@ -21,11 +21,11 @@
                 <h4><fmt:message bundle="${loc}" key="local.join"/></h4>
                 <h2><fmt:message bundle="${loc}" key="local.create"/></h2>
             </div>
-            <form method="POST" action="controller" enctype="text/plain">
+            <form method="post" action="controller">
                 <input type="hidden" name="command" value="registration" id="command"/>
                 <div class="mb-3">
                     <label for="email"><fmt:message bundle="${loc}" key="local.form.email"/></label>
-                    <input type="email" class="form-control" id="email" placeholder="" required>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="" required>
                     <div class="invalid-feedback">
                         Please enter your email.
                     </div>
@@ -33,7 +33,7 @@
 
                 <div class="mb-3">
                     <label for="password"><fmt:message bundle="${loc}" key="local.form.password"/> </label>
-                    <input type="password" class="form-control" id="password" placeholder="">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="">
                     <div class="invalid-feedback">
                         Please enter a valid password
                     </div>
@@ -44,14 +44,16 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName"><fmt:message bundle="${loc}" key="local.form.first"/></label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value=""
+                               required>
                         <div class="invalid-feedback">
                             Valid first name is required.
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName"><fmt:message bundle="${loc}" key="local.form.last"/></label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value=""
+                               required>
                         <div class="invalid-feedback">
                             Valid last name is required.
                         </div>
@@ -60,7 +62,7 @@
 
                 <div class="mb-3">
                     <label for="company"><fmt:message bundle="${loc}" key="local.form.company"/></label>
-                    <input type="text" class="form-control" id="company" placeholder="" required>
+                    <input type="text" class="form-control" name="company" id="company" placeholder="" required>
                     <div class="invalid-feedback">
                         Please enter your company.
                     </div>
@@ -68,7 +70,7 @@
 
                 <div class="mb-3">
                     <label for="position"><fmt:message bundle="${loc}" key="local.form.position"/></label>
-                    <input type="text" class="form-control" id="position" placeholder="" required>
+                    <input type="text" class="form-control" name="position" id="position" placeholder="" required>
                     <div class="invalid-feedback">
                         Please enter your position.
                     </div>
@@ -76,7 +78,7 @@
 
                 <div class="mb-3">
                     <label for="role"><fmt:message bundle="${loc}" key="local.form.role"/></label>
-                    <select class="form-select" aria-label="Default select example" id="role">
+                    <select class="form-select" aria-label="Default select example" name="role" id="role">
                         <option value="manager"><fmt:message bundle="${loc}" key="local.form.manager"/></option>
                         <option value="developer"><fmt:message bundle="${loc}" key="local.form.developer"/></option>
                         <option value="customer"><fmt:message bundle="${loc}" key="local.form.customer"/></option>
@@ -87,21 +89,24 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="experience"><fmt:message bundle="${loc}" key="local.form.experience"/></label>
-                        <input type="text" class="form-control" id="experience" placeholder="" value="" required>
+                        <input type="text" class="form-control" name="experience" id="experience" placeholder=""
+                               value="" required>
                         <div class="invalid-feedback">
                             Valid first name is required.
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="salary"><fmt:message bundle="${loc}" key="local.form.salary"/></label>
-                        <input type="text" class="form-control" id="salary" placeholder="" value="" required>
+                        <input type="text" class="form-control" name="salary" id="salary" placeholder="" value=""
+                               required>
                         <div class="invalid-feedback">
                             Valid last name is required.
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="primary"><fmt:message bundle="${loc}" key="local.form.primary"/></label>
-                        <input type="text" class="form-control" id="primary" placeholder="" value="" required>
+                        <label for="primary-skill"><fmt:message bundle="${loc}" key="local.form.primary"/></label>
+                        <input type="text" class="form-control" name="primary-skill" id="primary-skill" placeholder=""
+                               value="" required>
                         <div class="invalid-feedback">
                             Valid last name is required.
                         </div>
@@ -111,9 +116,10 @@
                 <div class="row">
 
                     <div class="col mb-3">
-                        <label for="skillsDescription"><fmt:message bundle="${loc}"
-                                                                    key="local.form.skills"/></label>
-                        <textarea class="form-control" aria-label="With textarea" id="skillsDescription"></textarea>
+                        <label for="skills-description"><fmt:message bundle="${loc}"
+                                                                     key="local.form.skills"/></label>
+                        <textarea class="form-control" aria-label="With textarea" name="skills-description"
+                                  id="skills-description"></textarea>
                     </div>
 
                 </div>
