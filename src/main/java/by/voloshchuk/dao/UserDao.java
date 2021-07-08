@@ -7,4 +7,6 @@ public interface UserDao {
 
     boolean addUser(User user) throws DaoException;
 
+    User findUserByEmail(String email) throws DaoException;
+
 }

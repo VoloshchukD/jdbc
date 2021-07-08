@@ -37,6 +37,10 @@ public class UserDaoImpl implements UserDao {
             "ON users.user_detail_id = user_details.user_detail_id " +
             "WHERE user_id = ?";
 
+    private static final String SQL_FIND_USER_BY_EMAIL = "SELECT * FROM users INNER JOIN user_details " +
+            "ON users.user_detail_id = user_details.user_detail_id " +
+            "WHERE email = ?";
+
     //TODO WHERE teams.users.role='developer' AND teams.user_details.experience >= 1
     // AND teams.user_details.salary <= 10000 AND teams.user_details.primary_skill = "Node.js"
     private static final String SQL_FIND_USER_BY_REQUIREMENT = "SELECT * FROM users " +
@@ -70,6 +74,38 @@ public class UserDaoImpl implements UserDao {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_BY_ID)) {
             statement.setString(1, String.valueOf(id));
+            ResultSet resultSet = statement.executeQuery();
+            user = new User();
+            if (resultSet.next()) {
+                user.setId(Long.valueOf(resultSet.getString(ConstantColumnName.USER_ID)));
+                user.setEmail(resultSet.getString(ConstantColumnName.USER_EMAIL));
+                user.setPassword(resultSet.getString(ConstantColumnName.USER_PASSWORD));
+                user.setRole(resultSet.getString(ConstantColumnName.USER_ROLE));
+
+                UserDetail userDetail = new UserDetail();
+                userDetail.setId(Long.valueOf(resultSet.getString(ConstantColumnName.USER_DETAIL_ID)));
+                userDetail.setFirstName(resultSet.getString(ConstantColumnName.USER_DETAIL_FIRST_NAME));
+                userDetail.setLastName(resultSet.getString(ConstantColumnName.USER_DETAIL_LAST_NAME));
+                userDetail.setCompany(resultSet.getString(ConstantColumnName.USER_DETAIL_COMPANY));
+                userDetail.setPosition(resultSet.getString(ConstantColumnName.USER_DETAIL_POSITION));
+                userDetail.setExperience(Integer.parseInt(resultSet.getString(ConstantColumnName.USER_DETAIL_EXPERIENCE)));
+                userDetail.setSalary(Integer.parseInt(resultSet.getString(ConstantColumnName.USER_DETAIL_SALARY)));
+                userDetail.setPrimarySkill(resultSet.getString(ConstantColumnName.USER_DETAIL_PRIMARY_SKILL));
+                userDetail.setSkillsDescription(resultSet.getString(ConstantColumnName.USER_DETAIL_SKILLS_DESCRIPTION));
+                userDetail.setStatus(resultSet.getString(ConstantColumnName.USER_DETAIL_STATUS));
+                user.setUserDetail(userDetail);
+            }
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return user;
+    }
+
+    public User findUserByEmail(String email) throws DaoException {
+        User user = null;
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_BY_EMAIL)) {
+            statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
             user = new User();
             if (resultSet.next()) {

@@ -27,7 +27,19 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    //        System.out.println(BCrypt.checkpw(password, hash));
+    public User checkUser(String email, String password) throws ServiceException {
+        User resultUser = null;
+        try {
+            User user = userDao.findUserByEmail(email);
+            boolean match = BCrypt.checkpw(password, user.getPassword());
+            if (match) {
+                resultUser = user;
+            }
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+        return resultUser;
+    }
 
     public void resetPassword(User user) {
 //        Password

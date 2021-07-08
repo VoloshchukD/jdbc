@@ -9,11 +9,9 @@ import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayDeque;
 import java.util.Enumeration;
-import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -24,7 +22,7 @@ public class CustomConnectionPool {
 
     private BlockingQueue<ProxyConnection> availableConnections;
 
-    private Queue<ProxyConnection> givenAwayConnections;
+    private BlockingQueue<ProxyConnection> givenAwayConnections;
 
     private static Lock lock = new ReentrantLock();
 
@@ -46,8 +44,8 @@ public class CustomConnectionPool {
     }
 
     private void init() {
-        availableConnections = new LinkedBlockingDeque<>(ConnectionProperty.DEFAULT_POOL_SIZE);
-        givenAwayConnections = new ArrayDeque<>();
+        availableConnections = new LinkedBlockingQueue<>(ConnectionProperty.DEFAULT_POOL_SIZE);
+        givenAwayConnections = new LinkedBlockingQueue<>(ConnectionProperty.DEFAULT_POOL_SIZE);
 
         for (int i = 0; i < ConnectionProperty.DEFAULT_POOL_SIZE; i++) {
             try {

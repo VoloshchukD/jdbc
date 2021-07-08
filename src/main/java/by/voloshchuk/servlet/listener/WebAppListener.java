@@ -9,12 +9,12 @@ public class WebAppListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-//        CustomConnectionPool.getInstance();
+        CustomConnectionPool.getInstance();
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-//        CustomConnectionPool.getInstance().destroyPool();
+        CustomConnectionPool.getInstance().destroyPool();
     }
 
 }

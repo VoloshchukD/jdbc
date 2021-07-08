@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,7 +47,6 @@ class ConnectionProperty {
                 }
             }
         }
-
         DRIVER_CLASS_NAME = properties.getProperty(DRIVER_CLASS_NAME_PROPERTY_NAME);
         DATABASE_URL = properties.getProperty(DB_URL_PROPERTY_NAME);
         DATABASE_USERNAME = properties.getProperty(DB_USERNAME_PROPERTY_NAME);
