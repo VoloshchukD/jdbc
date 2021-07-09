@@ -15,16 +15,18 @@ public class UserServiceImpl implements UserService {
 
     private UserDetailDao userDetailDao = new UserDetailDaoImpl();
 
-    public void addUser(User user) throws ServiceException {
+    public boolean addUser(User user) throws ServiceException {
+        boolean result = false;
         try {
             userDetailDao.addUserDetail(user.getUserDetail());
             String password = user.getPassword();
             String hash = BCrypt.hashpw(password, BCrypt.gensalt());
             user.setPassword(hash);
-            userDao.addUser(user);
+            result = userDao.addUser(user);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+        return result;
     }
 
     public User checkUser(String email, String password) throws ServiceException {

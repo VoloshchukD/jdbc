@@ -2,9 +2,10 @@ package by.voloshchuk.servlet.command;
 
 public enum CommandName {
 
-    NO_SUCH_COMMAND,
+    ERROR,
     MAIN,
     ABOUT,
+    PROJECTS,
     LOCALE,
     REGISTRATION,
     AUTHORIZATION

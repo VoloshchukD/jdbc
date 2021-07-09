@@ -5,7 +5,7 @@ import by.voloshchuk.exception.ServiceException;
 
 public interface UserService {
 
-    void addUser(User user) throws ServiceException;
+    boolean addUser(User user) throws ServiceException;
 
     User checkUser(String email, String password) throws ServiceException;
 

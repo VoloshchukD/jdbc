@@ -10,8 +10,10 @@ public class CommandProvider {
     private Map<CommandName, Command> commands = new HashMap<>();
 
     private CommandProvider() {
+        commands.put(CommandName.ERROR, new MainCommand());
         commands.put(CommandName.MAIN, new MainCommand());
         commands.put(CommandName.ABOUT, new AboutCommand());
+        commands.put(CommandName.PROJECTS, new ProjectsCommand());
         commands.put(CommandName.LOCALE, new LocaleCommand());
         commands.put(CommandName.REGISTRATION, new RegistrationCommand());
         commands.put(CommandName.AUTHORIZATION, new AuthorizationCommand());
@@ -27,7 +29,7 @@ public class CommandProvider {
         if (name != null) {
             command = commands.get(name);
         } else {
-            command = commands.get(CommandName.NO_SUCH_COMMAND);
+            command = commands.get(CommandName.ERROR);
         }
         return command;
     }

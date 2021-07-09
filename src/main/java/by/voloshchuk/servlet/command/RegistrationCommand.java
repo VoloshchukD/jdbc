@@ -5,6 +5,9 @@ import by.voloshchuk.entity.UserDetail;
 import by.voloshchuk.exception.ServiceException;
 import by.voloshchuk.service.UserService;
 import by.voloshchuk.service.UserServiceImpl;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,8 @@ import java.io.IOException;
 
 public class RegistrationCommand implements Command {
 
+    private static final Logger logger = LogManager.getLogger();
+
     private UserService userService = new UserServiceImpl();
 
     @Override
@@ -20,9 +25,11 @@ public class RegistrationCommand implements Command {
         if (request.getMethod().equals("POST")) {
             User user = createUser(request);
             try {
-                userService.addUser(user);
+                if (userService.addUser(user)) {
+                    request.getSession().setAttribute("role", user.getRole());
+                }
             } catch (ServiceException e) {
-                e.printStackTrace(); //TODO log
+                logger.log(Level.ERROR, e.getMessage());
             }
             response.sendRedirect("http://localhost:8080/controller?command=main");
         } else if (request.getMethod().equals("GET")) {

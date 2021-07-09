@@ -95,7 +95,6 @@
 </div>
 
 <%@ include file="../WEB-INF/jspf/footer.jspf" %>
-<%--<jsp:include page="../WEB-INF/jspf/footer.jspf"/>--%>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
