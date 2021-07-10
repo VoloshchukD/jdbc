@@ -4,7 +4,7 @@ import by.voloshchuk.entity.User;
 import by.voloshchuk.entity.UserDetail;
 import by.voloshchuk.exception.ServiceException;
 import by.voloshchuk.service.UserService;
-import by.voloshchuk.service.UserServiceImpl;
+import by.voloshchuk.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +26,9 @@ public class RegistrationCommand implements Command {
             User user = createUser(request);
             try {
                 if (userService.addUser(user)) {
+                    request.getSession().setAttribute("userId", user.getId());
                     request.getSession().setAttribute("role", user.getRole());
+                    System.out.println("/////// " + request.getSession().getAttribute("userId") + " " + request.getSession().getAttribute("role"));
                 }
             } catch (ServiceException e) {
                 logger.log(Level.ERROR, e.getMessage());

@@ -17,6 +17,7 @@ public class CommandProvider {
         commands.put(CommandName.LOCALE, new LocaleCommand());
         commands.put(CommandName.REGISTRATION, new RegistrationCommand());
         commands.put(CommandName.AUTHORIZATION, new AuthorizationCommand());
+        commands.put(CommandName.LOGOUT, new LogoutCommand());
     }
 
     public static CommandProvider getInstance() {

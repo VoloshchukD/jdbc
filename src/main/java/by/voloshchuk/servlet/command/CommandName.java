@@ -8,6 +8,7 @@ public enum CommandName {
     PROJECTS,
     LOCALE,
     REGISTRATION,
-    AUTHORIZATION
+    AUTHORIZATION,
+    LOGOUT
 
 }

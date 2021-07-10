@@ -5,15 +5,33 @@ import java.util.List;
 
 public class Project extends AbstractIdentifiedEntity {
 
+    private String name;
+
+    private String description;
+
     private Date startDate;
 
     private String state;
 
-    private Integer payment;
-
     private TechnicalTask technicalTask;
 
     private List<User> employees;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Date getStartDate() {
         return startDate;
@@ -29,14 +47,6 @@ public class Project extends AbstractIdentifiedEntity {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    public Integer getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Integer payment) {
-        this.payment = payment;
     }
 
     public TechnicalTask getTechnicalTask() {
@@ -58,9 +68,13 @@ public class Project extends AbstractIdentifiedEntity {
     @Override
     public String toString() {
         return "Project{" +
-                "startDate=" + startDate +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", startDate=" + startDate +
                 ", state='" + state + '\'' +
-                ", payment=" + payment;
+                ", technicalTask=" + technicalTask +
+                ", employees=" + employees +
+                '}';
     }
 
 }

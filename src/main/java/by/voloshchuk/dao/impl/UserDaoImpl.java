@@ -63,6 +63,12 @@ public class UserDaoImpl implements UserDao {
             statement.setString(3, user.getRole());
             statement.setString(4, String.valueOf(user.getUserDetail().getId()));
             isAdded = statement.executeUpdate() == 1;
+            if (isAdded) {
+                ResultSet resultSet = statement.getGeneratedKeys();
+                resultSet.next();
+                long userId = resultSet.getInt(1);
+                user.setId(userId);
+            }
         } catch (SQLException e) {
             throw new DaoException(e);
         }

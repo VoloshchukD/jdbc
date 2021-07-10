@@ -9,25 +9,30 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/projects.css">
 </head>
 <body>
 <div class="container-xxl">
-    <main class="m-3">
-        <div class="row col-md-6">
-            <table class="table table-striped table-bordered table-sm">
-                <tr>
-                    <th>id</th>
-                    <th>payment</th>
-                </tr>
-
-                <c:forEach items="${projects}" var="project">
-                    <tr>
-                        <td>${project.id}</td>
-                        <td>${project.payment}</td>
-                    </tr>
-                </c:forEach>
-            </table>
+    <div class="container py-3">
+        <div class="title h1 text-center">Your Projects</div>
+        <c:forEach items="${projects}" var="project">
+        <div class="card">
+            <div class="row ">
+                <div class="col-md-7 px-3">
+                    <div class="card-block px-6">
+                        <h4 class="card-title">${project.name}</h4>
+                        <p class="card-text">${project.description}</p>
+                        <p class="card-text"></p>
+                        <a href="#" class="mt-auto btn btn-primary  ">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <img class="d-block" src="https://picsum.photos/450/300?image=1072" alt="">
+                </div>
+            </div>
         </div>
+        </c:forEach>
+    </div>
 
         <ul class="pagination">
             <c:if test="${currentPage != 1}">

@@ -1,4 +1,4 @@
-package by.voloshchuk.service;
+package by.voloshchuk.service.impl;
 
 import by.voloshchuk.dao.UserDao;
 import by.voloshchuk.dao.UserDetailDao;
@@ -7,6 +7,7 @@ import by.voloshchuk.dao.impl.UserDetailDaoImpl;
 import by.voloshchuk.entity.User;
 import by.voloshchuk.exception.DaoException;
 import by.voloshchuk.exception.ServiceException;
+import by.voloshchuk.service.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class UserServiceImpl implements UserService {

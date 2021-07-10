@@ -50,6 +50,10 @@ final class ConstantColumnName {
 
     public static final String PROJECT_START_DATE = "start_date";
 
+    public static final String PROJECT_NAME = "project_name";
+
+    public static final String PROJECT_DESCRIPTION = "description";
+
     public static final String PROJECT_STATE = "state";
 
     public static final String PROJECT_PAYMENT = "payment";

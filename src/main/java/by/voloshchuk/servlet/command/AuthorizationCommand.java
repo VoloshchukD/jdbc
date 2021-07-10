@@ -3,7 +3,7 @@ package by.voloshchuk.servlet.command;
 import by.voloshchuk.entity.User;
 import by.voloshchuk.exception.ServiceException;
 import by.voloshchuk.service.UserService;
-import by.voloshchuk.service.UserServiceImpl;
+import by.voloshchuk.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +28,10 @@ public class AuthorizationCommand implements Command {
             try {
                 User currentUser = userService.checkUser(email, password);
                 if (currentUser != null) {
+                    request.getSession().setAttribute("userId", currentUser.getId());
                     request.getSession().setAttribute("role", currentUser.getRole());
+                    System.out.println("/////// " + request.getSession().getAttribute("userId") + " " + request.getSession().getAttribute("role"));
+
                 }
             } catch (ServiceException e) {
                 logger.log(Level.ERROR, e.getMessage());
