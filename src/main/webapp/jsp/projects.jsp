@@ -16,24 +16,44 @@
     <div class="container py-3">
         <div class="title h1 text-center">Your Projects</div>
         <c:forEach items="${projects}" var="project">
-        <div class="card">
-            <div class="row ">
-                <div class="col-md-7 px-3">
-                    <div class="card-block px-6">
-                        <h4 class="card-title">${project.name}</h4>
-                        <p class="card-text">${project.description}</p>
-                        <p class="card-text"></p>
-                        <a href="#" class="mt-auto btn btn-primary  ">Read More</a>
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-8">
+                    <div class="card p-3 mb-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <h2 class="mb-0">${project.name}</h2>
+                            </div>
+<%--                            <c:choose>--%>
+<%--                                <c:when test="${project.state == 'in progress'}">--%>
+                                    <div class="badge"><span class="inprogress">In Progress</span></div>
+<%--                                </c:when>--%>
+<%--                                <c:when test="${project.state == 'in progress'}">--%>
+                                    <div class="badge"><span class="finished">Finished</span></div>
+<%--                                </c:when>--%>
+<%--                                <c:when test="${project.state == 'starting'}">--%>
+                                <div class="badge"><span class="starting">Starting</span></div>
+<%--                                </c:when>--%>
+<%--                            </c:choose>--%>
+                        </div>
+                        <hr>
+                        <div class="mt-5">
+                            <h6 class="heading">${project.description}</h6>
+                            <div class="mt-5">
+                                <div class="ss">
+                                    <button type="submit" class="btn btn-primary">Open</button>
+                                </div>
+                                <div class="mt-3"><span class="text1">Started at <span
+                                        class="text2">${project.startDate}</span></span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <img class="d-block" src="https://picsum.photos/450/300?image=1072" alt="">
-                </div>
+
             </div>
-        </div>
         </c:forEach>
     </div>
 
+    <c:if test="${allPagesNumber != 1}">
         <ul class="pagination">
             <c:if test="${currentPage != 1}">
                 <li class="page-item"><a class="page-link"
@@ -46,8 +66,7 @@
                 </li>
             </c:if>
 
-            <c:forEach begin="1" end="${allPagesNumber}" var="i" varStatus="theCount">
-<%--                ${theCount.count}--%>
+            <c:forEach begin="1" end="${allPagesNumber}" var="i">
                 <c:choose>
                     <c:when test="${currentPage eq i}">
                         <li class="page-item active"><a class="page-link">
@@ -76,6 +95,7 @@
                 </li>
             </c:if>
         </ul>
+    </c:if>
 
     </main>
 </div>

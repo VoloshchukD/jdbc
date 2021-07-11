@@ -5,23 +5,41 @@ body {
     margin-bottom: 50px;
     text-transform: uppercase;
 }
-.card-block {
-    font-size: 1em;
-    position: relative;
-    margin: 0;
-    padding: 1em;
-    border: none;
-    border-top: 1px solid rgba(34, 36, 38, .1);
-}
 .card {
-    font-size: 1em;
-    overflow: hidden;
-    padding: 5;
     border: none;
-    border-radius: .28571429rem;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    margin-top:20px;
+    border-radius: 10px
 }
-.btn {
-    margin-top: auto;
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
+.badge span {
+    width: 60px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+
+    justify-content: center;
+    align-items: center
+}
+
+.inprogress {
+    background-color: #fffbec;
+    color: #fed85d;
+}
+.finished {
+    background-color: #e6ffee;
+    color: #008000;
+}
+.starting {
+    background-color: #e6ecff;
+    color: #0000FF;
+}
+.text1 {
+    font-size: 14px;
+    font-weight: 600
+}
+.text2 {
+    color: #a5aec0
 }
