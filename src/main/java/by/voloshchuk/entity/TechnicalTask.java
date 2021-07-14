@@ -11,6 +11,8 @@ public class TechnicalTask extends AbstractIdentifiedEntity {
 
     private Integer workersAmount;
 
+    private String status;
+
     private User customer;
 
     private List<EmployeeRequirement> requirements;
@@ -37,6 +39,14 @@ public class TechnicalTask extends AbstractIdentifiedEntity {
 
     public void setWorkersAmount(Integer workersAmount) {
         this.workersAmount = workersAmount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public User getCustomer() {

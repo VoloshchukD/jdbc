@@ -13,59 +13,81 @@
 </head>
 <body>
 <div class="container-xxl">
-    <div class="container py-3">
-        <div class="title h1 text-center">Your Projects</div>
-        <c:forEach items="${projects}" var="project">
-            <div class="row justify-content-center mt-3">
-                <div class="col-md-8">
-                    <div class="card p-3 mb-2">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-                                <h2 class="mb-0">${project.name}</h2>
-                            </div>
-<%--                            <c:choose>--%>
-<%--                                <c:when test="${project.state == 'in progress'}">--%>
-                                    <div class="badge"><span class="inprogress">In Progress</span></div>
-<%--                                </c:when>--%>
-<%--                                <c:when test="${project.state == 'in progress'}">--%>
-                                    <div class="badge"><span class="finished">Finished</span></div>
-<%--                                </c:when>--%>
-<%--                                <c:when test="${project.state == 'starting'}">--%>
-                                <div class="badge"><span class="starting">Starting</span></div>
-<%--                                </c:when>--%>
-<%--                            </c:choose>--%>
+    <div class="title h1 text-center mt-3">Your Projects</div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-4">
+            <ul class="nav nav-tabs justify-content-center">
+                <c:choose>
+                    <c:when test="${state == 'in progress'}">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="?command=projects&projectsPerPage=5&currentPage=1&state=in%20progress">Active</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?command=projects&projectsPerPage=5&currentPage=1&state=finished">Finished</a>
+                        </li>
+                    </c:when>
+                    <c:when test="${state == 'finished'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="?command=projects&projectsPerPage=5&currentPage=1&state=in%20progress">Active</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="?command=projects&projectsPerPage=5&currentPage=1&state=finished">Finished</a>
+                        </li>
+                    </c:when>
+                </c:choose>
+            </ul>
+        </div>
+    </div>
+    <c:forEach items="${projects}" var="project">
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <div class="card p-3 mb-2">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                            <h2 class="mb-0">${project.name}</h2>
                         </div>
-                        <hr>
+                        <c:choose>
+                            <c:when test="${project.state == 'in progress'}">
+                                <div class="badge"><span class="inprogress">In Progress</span></div>
+                            </c:when>
+                            <c:when test="${project.state == 'finished'}">
+                                <div class="badge"><span class="finished">Finished</span></div>
+                            </c:when>
+                            <c:when test="${project.state == 'starting'}">
+                                <div class="badge"><span class="starting">Starting</span></div>
+                            </c:when>
+                        </c:choose>
+                    </div>
+                    <hr>
+                    <div class="mt-5">
+                        <h6 class="heading">${project.description}</h6>
                         <div class="mt-5">
-                            <h6 class="heading">${project.description}</h6>
-                            <div class="mt-5">
-                                <div class="ss">
-                                    <button type="submit" class="btn btn-primary">Open</button>
-                                </div>
-                                <div class="mt-3"><span class="text1">Started at <span
-                                        class="text2">${project.startDate}</span></span></div>
+                            <div class="ss">
+                                <button type="submit" class="btn btn-primary">Open</button>
                             </div>
+                            <div class="mt-3"><span class="text1">Started at <span
+                                    class="text2">${project.startDate}</span></span></div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </c:forEach>
-    </div>
+        </div>
+    </c:forEach>
 
     <c:if test="${allPagesNumber != 1}">
-        <ul class="pagination">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-8">
+        <ul class="pagination justify-content-center">
             <c:if test="${currentPage != 1}">
                 <li class="page-item"><a class="page-link"
-                                         href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=1">First</a>
+                                         href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=1&state=${state}">First</a>
                 </li>
             </c:if>
             <c:if test="${currentPage != 1}">
                 <li class="page-item"><a class="page-link"
-                                         href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=${currentPage-1}">Previous</a>
+                                         href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=${currentPage-1}&state=${state}">Previous</a>
                 </li>
             </c:if>
-
             <c:forEach begin="1" end="${allPagesNumber}" var="i">
                 <c:choose>
                     <c:when test="${currentPage eq i}">
@@ -76,28 +98,26 @@
                     <c:otherwise>
                         <c:if test="${(currentPage eq i - 1) || (currentPage eq i + 1)}">
                             <li class="page-item"><a class="page-link"
-                                                     href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=${i}">${i}</a>
+                                                     href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=${i}&state=${state}">${i}</a>
                             </li>
                         </c:if>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-
             <c:if test="${currentPage < allPagesNumber}">
                 <li class="page-item"><a class="page-link"
-                                         href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=${currentPage+1}">Next</a>
+                                         href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=${currentPage+1}&state=${state}">Next</a>
                 </li>
             </c:if>
-
             <c:if test="${currentPage != allPagesNumber}">
                 <li class="page-item"><a class="page-link"
-                                         href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=${allPagesNumber}">Last</a>
+                                         href="?command=projects&projectsPerPage=${projectsPerPage}&currentPage=${allPagesNumber}&state=${state}">Last</a>
                 </li>
             </c:if>
         </ul>
+        </div>
+    </div>
     </c:if>
-
-    </main>
 </div>
 <%@ include file="../WEB-INF/jspf/footer.jspf" %>
 </body>

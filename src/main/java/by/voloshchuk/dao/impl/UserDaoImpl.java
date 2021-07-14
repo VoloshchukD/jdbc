@@ -13,25 +13,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-//USERS//
-//INSERT INTO `teams`.`users` (`email`, `password`, `role`, `user_detail_id`) VALUES ('sato1224@gmail.com', 'qwq34g34erty123', 'customer', '1');
-//        UPDATE `teams`.`users` SET `password` = 'zsdbdgh' WHERE (`user_id` = '1');
-//        DELETE FROM `teams`.`users` WHERE (`user_id` = '1');
-//        SELECT * FROM teams.users WHERE email='sato1224@gmail.com'
-//for user-manager to find developers for project
-//        SELECT * FROM teams.users INNER JOIN teams.user_details ON teams.users.user_id = teams.user_details.user_detail_id WHERE teams.users.role='developer' AND teams.user_details.experience >= 1
-//        AND teams.user_details.salary <= 10000 AND teams.user_details.primary_skill = "C"
-//for user-manager to look for work
-//        SELECT * FROM teams.technical_tasks WHERE teams.technical_tasks.status = 'WAITING_PROJECT'
-
-//MAPS//
-//        INSERT INTO `teams`.`user_project_maps` (`project_id`, `user_id`) VALUES ('1', '3');
-//        DELETE FROM `teams`.`user_project_maps` WHERE (`user_project_map_id` = '1');
 
 public class UserDaoImpl implements UserDao {
 
     private static final String SQL_ADD_USER = "INSERT INTO users (email, " +
             "password, role, user_detail_id) VALUES (?, ?, ?, ?)";
+
+    private static final String SQL_ADD_USER_TO_PROJECT = "INSERT INTO teams.user_project_maps (project_id, user_id) VALUES (?, ?);";
+
+    private static final String SQL_DELETE_USER_FROM_PROJECT = "DELETE FROM teams.user_project_maps WHERE project_id = ? AND user_id = ?;";
 
     private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM users INNER JOIN user_details " +
             "ON users.user_detail_id = user_details.user_detail_id " +
@@ -41,14 +31,12 @@ public class UserDaoImpl implements UserDao {
             "ON users.user_detail_id = user_details.user_detail_id " +
             "WHERE email = ?";
 
-    //TODO WHERE teams.users.role='developer' AND teams.user_details.experience >= 1
-    // AND teams.user_details.salary <= 10000 AND teams.user_details.primary_skill = "Node.js"
     private static final String SQL_FIND_USER_BY_REQUIREMENT = "SELECT * FROM users " +
-            "INNER JOIN user_details ON users.user_id = user_details.user_detail_id WHERE role='developer' " +
-            "AND experience >= ? AND salary <= ? AND position = ?";
+            "INNER JOIN user_details ON users.user_id = user_details.user_detail_id WHERE teams.users.role = 'developer' " +
+            "AND teams.user_details.experience >= ? AND teams.user_details.salary <= ? AND teams.user_details.primary_skill = ?";
 
     private static final String SQL_UPDATE_USER = "UPDATE users SET email = ?, " +
-            "password = ?, role = ?, user_detail_id = ? WHERE user_id = ?";
+            "password = ? WHERE user_id = ?";
 
     private static final String SQL_DELETE_USER = "DELETE FROM users WHERE user_id = ?";
 
@@ -139,16 +127,13 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    //TODO user details update
     public User updateUser(User user) throws DaoException {
         User resultUser = null;
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_USER)) {
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
-            statement.setString(3, user.getRole());
-            statement.setString(4, String.valueOf(user.getUserDetail().getId()));
-            statement.setString(5, String.valueOf(user.getId()));
+            statement.setLong(3, user.getId());
             int result = statement.executeUpdate();
             if (result == 1) {
                 resultUser = user;
@@ -159,7 +144,6 @@ public class UserDaoImpl implements UserDao {
         return resultUser;
     }
 
-    //TODO user details delete
     public boolean removeUserById(Long id) throws DaoException {
         boolean isRemoved = false;
         try (Connection connection = connectionPool.getConnection();
@@ -179,7 +163,7 @@ public class UserDaoImpl implements UserDao {
              PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_BY_REQUIREMENT)) {
             statement.setString(1, String.valueOf(requirements.getExperience()));
             statement.setString(2, String.valueOf(requirements.getSalary()));
-            statement.setString(3, String.valueOf(requirements.getQualification()));
+            statement.setString(3, String.valueOf(requirements.getPrimarySkill()));
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -207,6 +191,33 @@ public class UserDaoImpl implements UserDao {
             throw new DaoException(e);
         }
         return users;
+    }
+
+    public boolean addUserToProject(Long projectId, Long userId) throws DaoException {
+        boolean isAdded = false;
+
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_ADD_USER_TO_PROJECT)) {
+            statement.setLong(1, projectId);
+            statement.setLong(2, userId);
+            isAdded = statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return isAdded;
+    }
+
+    public boolean removeUserFromProject(Long projectId, Long userId) throws DaoException {
+        boolean isRemoved = false;
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_USER_FROM_PROJECT)) {
+            statement.setLong(1, projectId);
+            statement.setLong(2, userId);
+            isRemoved = statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return isRemoved;
     }
 
 }

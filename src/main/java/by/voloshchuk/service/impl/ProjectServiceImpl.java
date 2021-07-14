@@ -14,10 +14,10 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectDao projectDao = new ProjectDaoImpl();
 
     @Override
-    public List<Project> findProjectsByUserId(Long useId) throws ServiceException {
+    public List<Project> findProjectsByUserIdAndState(Long useId, String state) throws ServiceException {
         List<Project> projects = null;
         try {
-            projects = projectDao.findProjectsByUserId(useId);
+            projects = projectDao.findProjectsByUserIdAndState(useId, state);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

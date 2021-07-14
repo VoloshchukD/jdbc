@@ -1,4 +1,6 @@
-package by.voloshchuk.servlet.command;
+package by.voloshchuk.servlet.command.impl;
+
+import by.voloshchuk.servlet.command.Command;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

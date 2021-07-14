@@ -1,18 +1,22 @@
 body {
-    background-color:  #eee;
+    background-color: #eee;
 }
+
 .title {
     margin-bottom: 50px;
     text-transform: uppercase;
 }
+
 .card {
     border: none;
     border-radius: 10px
 }
+
 .c-details span {
     font-weight: 300;
     font-size: 13px
 }
+
 .badge span {
     width: 60px;
     height: 25px;
@@ -28,18 +32,22 @@ body {
     background-color: #fffbec;
     color: #fed85d;
 }
+
 .finished {
     background-color: #e6ffee;
     color: #008000;
 }
+
 .starting {
     background-color: #e6ecff;
     color: #0000FF;
 }
+
 .text1 {
     font-size: 14px;
     font-weight: 600
 }
+
 .text2 {
     color: #a5aec0
 }

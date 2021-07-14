@@ -8,11 +8,6 @@ import by.voloshchuk.exception.DaoException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-//PROJECTS//
-//        INSERT INTO `teams`.`projects` (`start_date`, `state`, `technical_task_id`) VALUES ('2020-12-31 08:40:00', 'IN_PROGRESS','1');
-//        UPDATE `teams`.`projects` SET `state` = 'FINISHED' WHERE (`project_id` = '1');
-//        DELETE FROM `teams`.`projects` WHERE (`project_id` = '1');
-
 
 public class ProjectDaoImpl implements ProjectDao {
 
@@ -22,8 +17,8 @@ public class ProjectDaoImpl implements ProjectDao {
 
     private static final String SQL_FIND_PROJECT_BY_ID = "SELECT * FROM projects WHERE project_id = ?";
 
-    private static final String SQL_FIND_BY_USER_ID = "SELECT * FROM teams.projects INNER JOIN teams.user_project_maps " +
-            "ON teams.projects.project_id=teams.user_project_maps.project_id WHERE teams.user_project_maps.user_id = ?";
+    private static final String SQL_FIND_PROJECTS_BY_USER_ID_AND_STATE = "SELECT * FROM teams.projects INNER JOIN teams.user_project_maps " +
+            "ON teams.projects.project_id=teams.user_project_maps.project_id WHERE teams.user_project_maps.user_id = ? AND teams.projects.state = ?";
 
     private static final String SQL_UPDATE_PROJECT = "UPDATE projects SET project_name = ?, description = ?, start_date = ?, state = ?," +
             " technical_task_id = ? WHERE project_id = ?";
@@ -63,8 +58,6 @@ public class ProjectDaoImpl implements ProjectDao {
                 Date date = new Date(timestamp.getTime());
                 project.setStartDate(date);
                 project.setState(resultSet.getString(ConstantColumnName.PROJECT_STATE));
-//              TODO  project.setTechnicalTask();
-
             }
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -72,11 +65,12 @@ public class ProjectDaoImpl implements ProjectDao {
         return project;
     }
 
-    public List<Project> findProjectsByUserId(Long userId) throws DaoException {
+    public List<Project> findProjectsByUserIdAndState(Long userId, String state) throws DaoException {
         List<Project> projects = new ArrayList<>();
         try (Connection connection = connectionPool.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_USER_ID)) {
+             PreparedStatement statement = connection.prepareStatement(SQL_FIND_PROJECTS_BY_USER_ID_AND_STATE)) {
             statement.setLong(1, userId);
+            statement.setString(2, state);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Project project = new Project();

@@ -62,8 +62,6 @@ public class CustomConnectionPool {
             logger.log(Level.FATAL, "Connection pool is created without connections");
             throw new WebAppRuntimeException("Connection pool is not created");
         }
-
-        //TODO если соединений меньше чем в файле досоздать до нужного количества
     }
 
     public static CustomConnectionPool getInstance() {

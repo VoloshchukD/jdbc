@@ -6,12 +6,6 @@ import by.voloshchuk.entity.UserDetail;
 import by.voloshchuk.exception.DaoException;
 
 import java.sql.*;
-//USER_DETAILS//
-//        INSERT INTO `teams`.`user_details` (`first_name`, `last_name`, `company`, `position`, `experience`, `salary`, `primary_skill` , `skills_description`, `status`)
-//        VALUES ('Tobias', 'Richter', 'IBM', 'Full stack Developer', '12', '60', 'Node.js,', 'Node.js, React.js, HTML/CSS/DOM/JS (ES6), Git, Jira.', 'busy');
-//        UPDATE `teams`.`user_details` SET `first_name` = 'Tobias', `last_name` = 'Richter', `company` = 'Google', `position` = 'Back End Developer', `experience` = '13',
-//        `salary` = '70', `primary_skill` = '.Net', `skills_description` = 'Java, Spring, Spring Boot, Spring Security, Maven, PostgreSQL, Git', `status` = 'busy' WHERE (`user_detail_id` = '1');
-//        DELETE FROM `teams`.`user_details` WHERE (`user_detail_id` = '1');
 
 public class UserDetailDaoImpl implements UserDetailDao {
 

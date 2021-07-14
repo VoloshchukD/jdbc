@@ -1,9 +1,13 @@
-package by.voloshchuk.servlet.command;
+package by.voloshchuk.servlet.command.impl;
 
 import by.voloshchuk.entity.Project;
 import by.voloshchuk.exception.ServiceException;
 import by.voloshchuk.service.ProjectService;
 import by.voloshchuk.service.impl.ProjectServiceImpl;
+import by.voloshchuk.servlet.command.Command;
+import by.voloshchuk.servlet.command.CommandPath;
+import by.voloshchuk.servlet.command.RequestParameter;
+import by.voloshchuk.servlet.command.SessionAttribute;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,13 +27,14 @@ public class ProjectsCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        int currentPage = Integer.parseInt(request.getParameter("currentPage"));
-        int projectsPerPage = Integer.parseInt(request.getParameter("projectsPerPage"));
-        Long userId = (Long) request.getSession().getAttribute("userId");
+        int currentPage = Integer.parseInt(request.getParameter(RequestParameter.CURRENT_PAGE));
+        int projectsPerPage = Integer.parseInt(request.getParameter(RequestParameter.PROJECTS_PER_PAGE));
+        String state = request.getParameter(RequestParameter.PROJECT_STATE);
+        Long userId = (Long) request.getSession().getAttribute(SessionAttribute.USER_ID);
         List<Project> projects = null;
         System.out.println("proj");
         try {
-            projects = projectService.findProjectsByUserId(userId);
+            projects = projectService.findProjectsByUserIdAndState(userId, state);
             System.out.println("projects" + projects);
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e.getMessage());
@@ -44,18 +49,19 @@ public class ProjectsCommand implements Command {
             pageProjects.add(projects.get(i));
         }
 
-        request.setAttribute("projects", pageProjects);
+        request.setAttribute(RequestParameter.PROJECTS, pageProjects);
 
         int pagesNumber = projects.size() / projectsPerPage;
         if (projects.size() % projectsPerPage != 0) {
             pagesNumber++;
         }
         System.out.println("allPagesNumber " + pagesNumber);
-        request.setAttribute("allPagesNumber", pagesNumber);
-        request.setAttribute("currentPage", currentPage);
-        request.setAttribute("projectsPerPage", projectsPerPage);
+        request.setAttribute(RequestParameter.ALL_PAGES, pagesNumber);
+        request.setAttribute(RequestParameter.CURRENT_PAGE, currentPage);
+        request.setAttribute(RequestParameter.PROJECT_STATE, state);
+        request.setAttribute(RequestParameter.PROJECTS_PER_PAGE, projectsPerPage);
 
-        request.getRequestDispatcher("/jsp/projects.jsp").forward(request, response);
+        request.getRequestDispatcher(CommandPath.PROJECTS_JSP).forward(request, response);
     }
 
 }

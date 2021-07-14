@@ -1,4 +1,7 @@
-package by.voloshchuk.servlet.command;
+package by.voloshchuk.servlet.command.impl;
+
+import by.voloshchuk.servlet.command.Command;
+import by.voloshchuk.servlet.command.CommandPath;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +13,7 @@ public class MainCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("main");
-        request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
+        request.getRequestDispatcher(CommandPath.MAIN_JSP).forward(request, response);
     }
 
 }

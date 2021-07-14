@@ -8,7 +8,7 @@ public class Bill extends AbstractIdentifiedEntity {
 
     private Integer amountDue;
 
-    private Integer projectId;
+    private Long projectId;
 
     public String getStatus() {
         return status;
@@ -34,11 +34,11 @@ public class Bill extends AbstractIdentifiedEntity {
         this.amountDue = amountDue;
     }
 
-    public Integer getProjectId() {
+    public Long getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Integer projectId) {
+    public void setProjectId(Long projectId) {
         this.projectId = projectId;
     }
 

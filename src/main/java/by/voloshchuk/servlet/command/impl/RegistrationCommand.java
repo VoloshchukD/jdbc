@@ -1,10 +1,14 @@
-package by.voloshchuk.servlet.command;
+package by.voloshchuk.servlet.command.impl;
 
 import by.voloshchuk.entity.User;
 import by.voloshchuk.entity.UserDetail;
 import by.voloshchuk.exception.ServiceException;
 import by.voloshchuk.service.UserService;
 import by.voloshchuk.service.impl.UserServiceImpl;
+import by.voloshchuk.servlet.command.Command;
+import by.voloshchuk.servlet.command.CommandPath;
+import by.voloshchuk.servlet.command.RequestParameter;
+import by.voloshchuk.servlet.command.SessionAttribute;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,14 +30,14 @@ public class RegistrationCommand implements Command {
             User user = createUser(request);
             try {
                 if (userService.addUser(user)) {
-                    request.getSession().setAttribute("userId", user.getId());
-                    request.getSession().setAttribute("role", user.getRole());
+                    request.getSession().setAttribute(SessionAttribute.USER_ID, user.getId());
+                    request.getSession().setAttribute(SessionAttribute.ROLE, user.getRole());
                     System.out.println("/////// " + request.getSession().getAttribute("userId") + " " + request.getSession().getAttribute("role"));
                 }
             } catch (ServiceException e) {
                 logger.log(Level.ERROR, e.getMessage());
             }
-            response.sendRedirect("http://localhost:8080/controller?command=main");
+            response.sendRedirect(CommandPath.MAIN);
         } else if (request.getMethod().equals("GET")) {
             request.getRequestDispatcher("/jsp/reg.jsp").forward(request, response);
         }
@@ -41,24 +45,24 @@ public class RegistrationCommand implements Command {
 
     private User createUser(HttpServletRequest request) {
         User user = new User();
-        user.setEmail(request.getParameter("email"));
-        user.setPassword(request.getParameter("password"));
-        user.setRole(request.getParameter("role"));
+        user.setEmail(request.getParameter(RequestParameter.EMAIL));
+        user.setPassword(request.getParameter(RequestParameter.PASSWORD));
+        user.setRole(request.getParameter(RequestParameter.ROLE));
         user.setUserDetail(createUserDetails(request));
         return user;
     }
 
     private UserDetail createUserDetails(HttpServletRequest request) {
         UserDetail userDetail = new UserDetail();
-        userDetail.setFirstName(request.getParameter("firstName"));
-        userDetail.setLastName(request.getParameter("lastName"));
-        userDetail.setCompany(request.getParameter("company"));
-        userDetail.setPosition(request.getParameter("position"));
-        userDetail.setExperience(Integer.parseInt(request.getParameter("experience")));
-        userDetail.setSalary(Integer.parseInt(request.getParameter("salary")));
-        userDetail.setPrimarySkill(request.getParameter("primarySkill"));
-        userDetail.setSkillsDescription(request.getParameter("skillsDescription"));
-        userDetail.setStatus(request.getParameter("status"));
+        userDetail.setFirstName(request.getParameter(RequestParameter.FIRST_NAME));
+        userDetail.setLastName(request.getParameter(RequestParameter.LAST_NAME));
+        userDetail.setCompany(request.getParameter(RequestParameter.COMPANY));
+        userDetail.setPosition(request.getParameter(RequestParameter.POSITION));
+        userDetail.setExperience(Integer.parseInt(request.getParameter(RequestParameter.EXPERIENCE)));
+        userDetail.setSalary(Integer.parseInt(request.getParameter(RequestParameter.SALARY)));
+        userDetail.setPrimarySkill(request.getParameter(RequestParameter.PRIMARY_SKILL));
+        userDetail.setSkillsDescription(request.getParameter(RequestParameter.SKILLS_DESCRIPTION));
+        userDetail.setStatus(request.getParameter(RequestParameter.STATUS));
         return userDetail;
     }
 

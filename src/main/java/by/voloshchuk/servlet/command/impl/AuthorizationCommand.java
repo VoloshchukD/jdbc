@@ -1,9 +1,13 @@
-package by.voloshchuk.servlet.command;
+package by.voloshchuk.servlet.command.impl;
 
 import by.voloshchuk.entity.User;
 import by.voloshchuk.exception.ServiceException;
 import by.voloshchuk.service.UserService;
 import by.voloshchuk.service.impl.UserServiceImpl;
+import by.voloshchuk.servlet.command.Command;
+import by.voloshchuk.servlet.command.CommandPath;
+import by.voloshchuk.servlet.command.RequestParameter;
+import by.voloshchuk.servlet.command.SessionAttribute;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,20 +27,20 @@ public class AuthorizationCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         if (request.getMethod().equals("POST")) {
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
+            String email = request.getParameter(RequestParameter.EMAIL);
+            String password = request.getParameter(RequestParameter.PASSWORD);
             try {
                 User currentUser = userService.checkUser(email, password);
                 if (currentUser != null) {
-                    request.getSession().setAttribute("userId", currentUser.getId());
-                    request.getSession().setAttribute("role", currentUser.getRole());
-                    System.out.println("/////// " + request.getSession().getAttribute("userId") + " " + request.getSession().getAttribute("role"));
+                    request.getSession().setAttribute(SessionAttribute.USER_ID, currentUser.getId());
+                    request.getSession().setAttribute(SessionAttribute.ROLE, currentUser.getRole());
+                    System.out.println("/////// " + request.getSession().getAttribute(SessionAttribute.USER_ID) + " " + request.getSession().getAttribute("role"));
 
                 }
             } catch (ServiceException e) {
                 logger.log(Level.ERROR, e.getMessage());
             }
-            response.sendRedirect("http://localhost:8080/controller?command=main");
+            response.sendRedirect(CommandPath.MAIN);
         } else if (request.getMethod().equals("GET")) {
             request.getRequestDispatcher("/jsp/auth.jsp").forward(request, response);
         }
