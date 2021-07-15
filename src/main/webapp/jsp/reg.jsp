@@ -22,7 +22,7 @@
                 <h2><fmt:message bundle="${loc}" key="local.create"/></h2>
             </div>
             <form method="post" action="controller" >
-                <input type="hidden" name="command" value="registration" id="command"/>
+                <input type="hidden" name="command" value="registrate" id="command"/>
 
                 <div class="mb-3">
                     <label for="email"><fmt:message bundle="${loc}" key="local.form.email"/></label>

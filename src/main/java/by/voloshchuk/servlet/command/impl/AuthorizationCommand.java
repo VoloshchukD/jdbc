@@ -26,8 +26,6 @@ public class AuthorizationCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        if (request.getMethod().equals("POST")) {
             String email = request.getParameter(RequestParameter.EMAIL);
             String password = request.getParameter(RequestParameter.PASSWORD);
             try {
@@ -42,11 +40,6 @@ public class AuthorizationCommand implements Command {
                 logger.log(Level.ERROR, e.getMessage());
             }
             response.sendRedirect(CommandPath.MAIN);
-        } else if (request.getMethod().equals("GET")) {
-            request.setAttribute(SessionAttribute.EMAIL_REGEX, RegexProperty.PROPERTY_EMAIL_REGEX);
-            request.setAttribute(SessionAttribute.PASSWORD_REGEX, RegexProperty.PROPERTY_PASSWORD_REGEX);
-            request.getRequestDispatcher("/jsp/auth.jsp").forward(request, response);
-        }
     }
 
 }

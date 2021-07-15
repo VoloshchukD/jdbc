@@ -12,7 +12,6 @@ public class MainCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("main");
         request.getRequestDispatcher(CommandPath.MAIN_JSP).forward(request, response);
     }
 

@@ -1,6 +1,9 @@
 package by.voloshchuk.servlet.command;
 
 import by.voloshchuk.servlet.command.impl.*;
+import by.voloshchuk.servlet.command.impl.transition.AboutCommand;
+import by.voloshchuk.servlet.command.impl.transition.ToAuthorizationCommand;
+import by.voloshchuk.servlet.command.impl.transition.ToRegistrationCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +20,10 @@ public class CommandProvider {
         commands.put(CommandName.ABOUT, new AboutCommand());
         commands.put(CommandName.PROJECTS, new ProjectsCommand());
         commands.put(CommandName.LOCALE, new LocaleCommand());
-        commands.put(CommandName.REGISTRATION, new RegistrationCommand());
-        commands.put(CommandName.AUTHORIZATION, new AuthorizationCommand());
+        commands.put(CommandName.REGISTRATION, new ToRegistrationCommand());
+        commands.put(CommandName.REGISTRATE, new RegistrationCommand());
+        commands.put(CommandName.AUTHORIZATION, new ToAuthorizationCommand());
+        commands.put(CommandName.AUTHORIZE, new AuthorizationCommand());
         commands.put(CommandName.LOGOUT, new LogoutCommand());
     }
 

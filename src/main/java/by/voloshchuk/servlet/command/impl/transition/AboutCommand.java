@@ -1,6 +1,7 @@
-package by.voloshchuk.servlet.command.impl;
+package by.voloshchuk.servlet.command.impl.transition;
 
 import by.voloshchuk.servlet.command.Command;
+import by.voloshchuk.servlet.command.CommandPath;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ public class AboutCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("/jsp/about.jsp").forward(request, response);
+        request.getRequestDispatcher(CommandPath.ABOUT_JSP).forward(request, response);
     }
 
 }

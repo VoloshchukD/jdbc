@@ -22,7 +22,7 @@
                 <h2><fmt:message bundle="${loc}" key="local.signin.welcome"/></h2>
             </div>
             <form method="POST" action="controller">
-                <input type="hidden" name="command" value="authorization" id="command"/>
+                <input type="hidden" name="command" value="authorize" id="command"/>
                 <div class="mb-3">
                     <label for="email"><fmt:message bundle="${loc}" key="local.form.email"/></label>
                     <input type="email" class="form-control" pattern="${regexEmail}" name="email" id="email" placeholder="" required>
