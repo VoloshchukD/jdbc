@@ -25,18 +25,12 @@
                 <input type="hidden" name="command" value="authorization" id="command"/>
                 <div class="mb-3">
                     <label for="email"><fmt:message bundle="${loc}" key="local.form.email"/></label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="" required>
-                    <div class="invalid-feedback">
-                        Please enter your email.
-                    </div>
+                    <input type="email" class="form-control" pattern="${regexEmail}" name="email" id="email" placeholder="" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="password"><fmt:message bundle="${loc}" key="local.form.password"/> </label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="">
-                    <div class="invalid-feedback">
-                        Please enter a valid password
-                    </div>
+                    <input type="password" class="form-control" pattern="${regexPassword}" name="password" id="password" placeholder="">
                 </div>
 
                 <div class="d-flex justify-content-center">

@@ -21,22 +21,17 @@
                 <h4><fmt:message bundle="${loc}" key="local.join"/></h4>
                 <h2><fmt:message bundle="${loc}" key="local.create"/></h2>
             </div>
-            <form method="post" action="controller">
+            <form method="post" action="controller" >
                 <input type="hidden" name="command" value="registration" id="command"/>
+
                 <div class="mb-3">
                     <label for="email"><fmt:message bundle="${loc}" key="local.form.email"/></label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="" required>
-                    <div class="invalid-feedback">
-                        Please enter your email.
-                    </div>
+                    <input type="email" class="form-control" pattern="${regexEmail}" name="email" id="email" placeholder="" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="password"><fmt:message bundle="${loc}" key="local.form.password"/> </label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="">
-                    <div class="invalid-feedback">
-                        Please enter a valid password
-                    </div>
+                    <input type="password" class="form-control" pattern="${regexPassword}" name="password" id="password" placeholder="" required>
                 </div>
 
                 <hr class="mb-4">
@@ -44,36 +39,25 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName"><fmt:message bundle="${loc}" key="local.form.first"/></label>
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value=""
+                        <input type="text" class="form-control" pattern="${regexFirst}" name="firstName" id="firstName" placeholder="" value=""
                                required>
-                        <div class="invalid-feedback">
-                            Valid first name is required.
-                        </div>
+
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName"><fmt:message bundle="${loc}" key="local.form.last"/></label>
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value=""
+                        <input type="text" class="form-control" pattern="${regexLast}" name="lastName" id="lastName" placeholder="" value=""
                                required>
-                        <div class="invalid-feedback">
-                            Valid last name is required.
-                        </div>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="company"><fmt:message bundle="${loc}" key="local.form.company"/></label>
-                    <input type="text" class="form-control" name="company" id="company" placeholder="" required>
-                    <div class="invalid-feedback">
-                        Please enter your company.
-                    </div>
+                    <input type="text" class="form-control" pattern="${regexCompany}" name="company" id="company" placeholder="" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="position"><fmt:message bundle="${loc}" key="local.form.position"/></label>
-                    <input type="text" class="form-control" name="position" id="position" placeholder="" required>
-                    <div class="invalid-feedback">
-                        Please enter your position.
-                    </div>
+                    <input type="text" class="form-control" pattern="${regexPosition}" name="position" id="position" placeholder="" required>
                 </div>
 
                 <div class="mb-3">
@@ -89,23 +73,17 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="experience"><fmt:message bundle="${loc}" key="local.form.experience"/></label>
-                        <input type="text" class="form-control" name="experience" id="experience" placeholder=""
+                        <input type="text" class="form-control" pattern="${regexExperience}" name="experience" id="experience" placeholder=""
                                value="" required>
-                        <div class="invalid-feedback">
-                            Valid first name is required.
-                        </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="salary"><fmt:message bundle="${loc}" key="local.form.salary"/></label>
-                        <input type="text" class="form-control" name="salary" id="salary" placeholder="" value=""
+                        <input type="text" class="form-control" pattern="${regexSalary}" name="salary" id="salary" placeholder="" value=""
                                required>
-                        <div class="invalid-feedback">
-                            Valid last name is required.
-                        </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="primary-skill"><fmt:message bundle="${loc}" key="local.form.primary"/></label>
-                        <input type="text" class="form-control" name="primary-skill" id="primary-skill" placeholder=""
+                        <input type="text" class="form-control" pattern="${regexPrimary}" name="primary-skill" id="primary-skill" placeholder=""
                                value="" required>
                         <div class="invalid-feedback">
                             Valid last name is required.
@@ -119,7 +97,7 @@
                         <label for="skills-description"><fmt:message bundle="${loc}"
                                                                      key="local.form.skills"/></label>
                         <textarea class="form-control" aria-label="With textarea" name="skills-description"
-                                  id="skills-description"></textarea>
+                                  id="skills-description" ></textarea>
                     </div>
 
                 </div>

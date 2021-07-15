@@ -8,6 +8,7 @@ import by.voloshchuk.servlet.command.Command;
 import by.voloshchuk.servlet.command.CommandPath;
 import by.voloshchuk.servlet.command.RequestParameter;
 import by.voloshchuk.servlet.command.SessionAttribute;
+import by.voloshchuk.util.RegexProperty;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,6 +43,8 @@ public class AuthorizationCommand implements Command {
             }
             response.sendRedirect(CommandPath.MAIN);
         } else if (request.getMethod().equals("GET")) {
+            request.setAttribute(SessionAttribute.EMAIL_REGEX, RegexProperty.PROPERTY_EMAIL_REGEX);
+            request.setAttribute(SessionAttribute.PASSWORD_REGEX, RegexProperty.PROPERTY_PASSWORD_REGEX);
             request.getRequestDispatcher("/jsp/auth.jsp").forward(request, response);
         }
     }
